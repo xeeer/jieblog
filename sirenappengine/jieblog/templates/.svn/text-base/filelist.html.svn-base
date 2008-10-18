@@ -1,0 +1,15 @@
+{{greeting}}
+{% for userfile in userfiles %}
+<div><a href='/file/{{userfile.key}}'>{{userfile.filename}}</a></div>
+<div><img src='/file/{{userfile.key}}'/></div>
+<div>{{userfile.owner}}</div>
+<div>{{userfile.content_type}}</div>
+<div>{{userfile.date_added}}</div>
+<div>{{userfile.size}}</div>
+{% ifequal user userfile.owner%}
+<div><a href='/delete/{{userfile.key}}'>delete</a></div>
+{% endifequal %}
+{% if show_delete %}
+<div><a href='/delete/{{userfile.key}}'>delete</a></div>
+{% endif %}
+{% endfor %}

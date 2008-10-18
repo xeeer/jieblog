@@ -1,0 +1,7 @@
+<div>
+<form action="." method="post">
+{{sitelinkform.as_p}}
+<input type="submit" name="createlink" value="createlink" />
+<input type="reset" name="reset" value="Reset" />
+</form>
+</div>

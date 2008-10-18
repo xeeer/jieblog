@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+	<head>
+		<title>JIEblog System</title>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/style.css" />
+		<link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+		<link rel="alternate" type="application/rss+xml" title="JIEblog - RSS" href="http://jieblog.appspot.com/feeds/" />
+		<link href="/stylesheets/prettify.css" type="text/css" rel="stylesheet" />
+		<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/stylesheets/wlwmanifest.xml" />
+
+		<script type="text/javascript" src="/scripts/prettify.js"></script>
+		<script type="text/javascript" src="/scripts/audio-player.js"></script>
+		<script type="text/javascript" src="/scripts/play_config.js"></script>
+		<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4170083-4");
+pageTracker._trackPageview();
+</script>
+		{% block title %}{% endblock %}
+	</head>
+	
+	<body onload="prettyPrint()">		
+		<div id="content">{% block contents %}{% endblock %}</div>
+	</body>
+</html>

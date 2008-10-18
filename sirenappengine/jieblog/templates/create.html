@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<form action="." method="post">
+{{postform.as_p}}
+
+{# the same as {{postform.title}}{{postform.content}} #}
+<input type="submit" name="createpost" value="createpost" />
+
+</form>
+
+{% endblock %}

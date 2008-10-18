@@ -1,0 +1,7 @@
+<div id="right-bar">
+		{% include 'sign.html' %}
+		{% include 'tag_cloud.html' %}
+		{% include 'featurelink.html' %}
+		{% include 'sitelink.html' %}
+		{% include 'powerby.html' %}
+</div>

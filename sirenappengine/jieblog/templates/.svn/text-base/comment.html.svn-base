@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<div class="container">
+	{% include 'header.html' %}	
+	<div id="comments-comment">
+		{% include 'sign.html' %}
+		<div id="comments">
+				<div id="widget-comment">Comment</div>
+				{% for comment in comments %}
+					{% include 'comm.html' %}
+				{% endfor %}
+		</div>	
+		{% include 'comment-form.html' %}
+	</div>
+	{% include 'post.html' %}
+</div>
+{% endblock %}

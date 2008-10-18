@@ -1,0 +1,140 @@
+{% extends 'admin-base.html' %}
+{% block title %}
+<link rel="stylesheet" type="text/css" href="/rich_text_editor/menu/assets/skins/sam/menu.css" />
+<link rel="stylesheet" type="text/css" href="/rich_text_editor/button/assets/skins/sam/button.css" />
+<link rel="stylesheet" type="text/css" href="/rich_text_editor/fonts/fonts-min.css" />
+<link rel="stylesheet" type="text/css" href="/rich_text_editor/container/assets/skins/sam/container.css" />
+<link rel="stylesheet" type="text/css" href="/rich_text_editor/editor/assets/skins/sam/editor.css" />
+<script type="text/javascript" src="/rich_text_editor/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="/rich_text_editor/animation/animation-min.js"></script>
+<script type="text/javascript" src="/rich_text_editor/element/element-beta-min.js"></script>
+<script type="text/javascript" src="/rich_text_editor/container/container-min.js"></script>
+<script type="text/javascript" src="/rich_text_editor/menu/menu-min.js"></script>
+<script type="text/javascript" src="/rich_text_editor/button/button-min.js"></script>
+<script type="text/javascript" src="/rich_text_editor/editor/editor-beta-min.js"></script>
+<script>
+(function() {
+	var Dom = YAHOO.util.Dom,
+		Event = YAHOO.util.Event;
+
+	var myConfig = {
+		height: '300px',
+		width: '640px',
+		animate: true,
+		dompath: true,
+		focusAtStart: true,
+		handleSubmit: true
+	};
+
+	var state = 'off';
+	YAHOO.log('Set state to off..', 'info', 'example');
+
+	YAHOO.log('Create the Editor..', 'info', 'example');
+	var myEditor = new YAHOO.widget.Editor('id_content', myConfig);
+	myEditor.on('toolbarLoaded', function() {
+		var codeConfig = {
+			type: 'push', label: 'Edit HTML Code', value: 'editcode'
+		};
+		YAHOO.log('Create the (editcode) Button', 'info', 'example');
+		this.toolbar.addButtonToGroup(codeConfig, 'insertitem');
+
+		this.toolbar.on('editcodeClick', function() {
+			var ta = this.get('element'),
+				iframe = this.get('iframe').get('element');
+
+			if (state == 'on') {
+				state = 'off';
+				this.toolbar.set('disabled', false);
+				YAHOO.log('Show the Editor', 'info', 'example');
+				YAHOO.log('Inject the HTML from the textarea into the editor', 'info', 'example');
+				this.setEditorHTML(ta.value);
+				if (!this.browser.ie) {
+					this._setDesignMode('on');
+				}
+
+				Dom.removeClass(iframe, 'editor-hidden');
+				Dom.addClass(ta, 'editor-hidden');
+				this.show();
+				this._focusWindow();
+			} else {
+				state = 'on';
+				YAHOO.log('Show the Code Editor', 'info', 'example');
+				this.cleanHTML();
+				YAHOO.log('Save the Editors HTML', 'info', 'example');
+				Dom.addClass(iframe, 'editor-hidden');
+				Dom.removeClass(ta, 'editor-hidden');
+				this.toolbar.set('disabled', true);
+				this.toolbar.getButtonByValue('editcode').set('disabled', false);
+				this.toolbar.selectButton('editcode');
+				this.dompath.innerHTML = 'Editing HTML Code';
+				this.hide();
+			}
+			return false;
+		}, this, true);
+
+		this.on('cleanHTML', function(ev) {
+			YAHOO.log('cleanHTML callback fired..', 'info', 'example');
+			this.get('element').value = ev.html;
+		}, this, true);
+
+		this.on('afterRender', function() {
+			var wrapper = this.get('editor_wrapper');
+			wrapper.appendChild(this.get('element'));
+			this.setStyle('width', '100%');
+			this.setStyle('height', '100%');
+			this.setStyle('visibility', '');
+			this.setStyle('top', '');
+			this.setStyle('left', '');
+			this.setStyle('position', '');
+
+			this.addClass('editor-hidden');
+		}, this, true);
+	}, myEditor, true);
+	myEditor.render();
+
+})();
+</script>
+<style>
+	.yui-skin-sam .yui-toolbar-container .yui-toolbar-editcode span.yui-toolbar-icon {
+		background-image: url( /rich_text_editor/assets/html_editor.gif );
+		background-position: 0 1px;
+		left: 5px;
+	}
+	.yui-skin-sam .yui-toolbar-container .yui-button-editcode-selected span.yui-toolbar-icon {
+		background-image: url( /rich_text_editor/assets/html_editor.gif );
+		background-position: 0 1px;
+		left: 5px;
+	}
+	.editor-hidden {
+		visibility: hidden;
+		top: -9999px;
+		left: -9999px;
+		position: absolute;
+	}
+	textarea {
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+</style>
+{% endblock %}
+{% block contents %}
+<div id="header">
+		<ul id="menu">
+			<li class='page_li'><a href="/login">Login</a></li>
+			<li class='page_li'><a href='/list'>Post List</a></li>
+			<li class='current_page_li'><a href="/create">New Post</a></li>
+			<li class='page_li'><a href="/setupdb">Site Config</a></li>
+		<ul>
+</div>
+<div id="main">
+{% include 'admin-sider-bar.html' %}
+<div id='post-form'>
+	<form action="." method="post"  id="form1">
+		{{postform.as_ul}}
+		<input type="submit" name="submit" value="Submit" id="submit"/>
+	</form>
+</div>
+</div>
+{% endblock%}
+

@@ -1,0 +1,53 @@
+{% extends 'admin-base.html' %}
+{% load filter %}
+
+{% block contents %}
+<div id="header">
+		<ul id="menu">
+			<li class='page_li'><a href="/login">Login</a></li>
+			<li class='current_page_li'><a href="/list">Post List</a></li>
+			<li class='page_li'><a href="/create">New Post</a></li>
+			<li class='page_li'><a href="/setupdb">Site Config</a></li>
+		<ul>
+</div>
+<div id="main">
+<div class='box'>
+	<table id="postlist">
+	  <tr>
+		<th>No.</th>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Date</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	  </tr>
+	  {% for post in posts %}
+		<tr class="{% cycle odd,even %}">
+		  <td>{{ forloop.counter }}</td>
+		  <td>{{ post.key.id }}</td>
+		  <td>{{ post.title }}</td>
+		  <td>{{ post.author }}</td>
+		  <td>{{ post.post_on|timezone:8|date:"Y-m-d H:i:s"}}</td>
+		  <td><a href="/edit/{{post.key.id}}">Edit</a></td>
+		  <td><a href="/remove/{{post.key.id}}">Delete</a></td>
+		</tr>
+	  {% endfor %}
+	  {% if show_page_panel %}
+	  <tr>
+	  	<td>
+	  	{% if show_prev %}
+		<a href="/list/{{ prev }}">PREV</a>
+		{% endif %}
+		{% if show_prev or show_next %}
+		{{  current_page }}
+		{% endif %}
+		{% if show_next %}
+		<a href="/list/{{ next }}">NEXT</a>
+		{% endif %}
+		</td>
+	  </tr>
+	  {% endif %}
+	</table>
+</div>
+{% endblock%}

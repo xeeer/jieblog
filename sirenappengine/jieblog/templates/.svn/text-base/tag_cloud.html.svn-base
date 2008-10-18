@@ -1,0 +1,5 @@
+<div id="tags_cloud">
+<div class="widget-title3">Tags Cloud</div>
+{% for tag in tag_cloud %}
+	<span class="tag_cloud"><a href="../../tag/{{tag}}">{{tag.name}}</a></span>
+{% endfor %}</div>

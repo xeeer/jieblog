@@ -1,0 +1,8 @@
+<div id="site-link">
+	<div class="widget-title">Site Link</div>
+	<ul>
+		{% for link in sitelink %}
+		<li><a href='{{link.link}}'>{{link.title}}</a></li>
+		{% endfor %}
+	</ul>
+</div>

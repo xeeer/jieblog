@@ -1,0 +1,5 @@
+	<div id="power-by">
+		<div class="widget-title2">Power By</div>
+		<div id="gae-icon"><img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" /></div>
+		<div id="django-icon"><img src="http://media.djangoproject.com/img/badges/djangoproject120x25.gif" alt="Made with Django." title="Made with Django." /></div>
+	</div>
