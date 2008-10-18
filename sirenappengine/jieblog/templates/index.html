@@ -11,7 +11,7 @@
 				{% include 'post.html' %}	
 			{% endfor %}
 
-		<span id="paginate">
+		<div id="paginate">
 			{% if show_page_panel %}
 			
 				{% if show_prev %}
@@ -31,7 +31,8 @@
 				{% endif %}
 				
 			{% endif %}
-		</span>
+		</div>
+		
+		{% include 'bottom.html' %}
 	</div>
-
 {% endblock %}
