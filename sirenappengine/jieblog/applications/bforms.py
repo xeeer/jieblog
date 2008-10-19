@@ -25,7 +25,7 @@ class PostForm(forms.Form):
 	content = forms.CharField(widget=forms.Textarea())
 	tags = forms.CharField()
 	article = forms.BooleanField(required=False)
-	draft = forms.BooleanField()
+	draft = forms.BooleanField(required=False)
 	def save(self,currnet_user):		
 		tags = split_tags(self.clean_data['tags'])
 		for tag in tags:
