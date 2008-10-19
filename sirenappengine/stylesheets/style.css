@@ -8,10 +8,9 @@ body {
 pre.prettyprint{
 	font-size: 11px;
 	line-height: 14px;
-	margin: 10px;
-	border-top: 1px solid #000;
-	border-left: 1px solid #000;
-	background-color: #a2bae7;
+	border-left: 3px solid #7755aa;
+	background-color: #eeeeff;
+	padding-left: 5px;
 }
 
 .error_me {
@@ -25,13 +24,13 @@ pre.prettyprint{
 }
 
 blockquote {
-	background-color: #676777;
-	color: #fff;
 	font-size: 11px;
 	font-style: italic;
+	border-left: 3px solid #58bf2f;
+	background-color: #eeffee;
 	padding-left: 5px;
-	padding-right: 5px;
 }
+
 
 #text_quo {
 	font-size: 11px;
