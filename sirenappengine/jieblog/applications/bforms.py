@@ -25,7 +25,7 @@ class PostForm(forms.Form):
 	content = forms.CharField(widget=forms.Textarea())
 	tags = forms.CharField()
 	article = forms.BooleanField(required=False)
-	
+	draft = forms.BooleanField()
 	def save(self,currnet_user):		
 		tags = split_tags(self.clean_data['tags'])
 		for tag in tags:
@@ -34,7 +34,7 @@ class PostForm(forms.Form):
 			if thetag==None:
 				blogtag = models.BlogTag(name=tag)
 				blogtag.put()
-		post = models.Post(article=self.clean_data['article'],tags = tags,title = self.clean_data['title'],content = self.clean_data['content'],author = currnet_user)
+		post = models.Post(article=self.clean_data['article'],tags = tags,title = self.clean_data['title'],content = self.clean_data['content'],author = currnet_user,draft = self.clean_data['draft'])
 		post.put()
 
 class EditForm(forms.Form):
@@ -42,11 +42,13 @@ class EditForm(forms.Form):
 	content = forms.CharField(widget=forms.Textarea())
 	tags = forms.CharField()
 	article = forms.BooleanField(required=False)
+	draft = forms.BooleanField(required=False)
 	def save(self,post):		
 		post.title = self.clean_data['title']
 		post.content = self.clean_data['content']
 		post.tags = split_tags(self.clean_data['tags'])
 		post.article = self.clean_data['article']
+		post.draft = self.clean_data['draft']
 		post.put()
 		
 			

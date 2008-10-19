@@ -53,6 +53,7 @@ class Post(db.Model):
 	tags = db.StringListProperty()
 	comments_count = db.IntegerProperty(0)
 	article = db.BooleanProperty()
+	draft = db.BooleanProperty(default=False)
 	
 	def __str__ (self):
 		return '%s' %self.title

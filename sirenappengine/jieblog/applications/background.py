@@ -60,7 +60,7 @@ def edit(request,post_id):
 	if users.is_current_user_admin():
 		post = models.Post.get_by_id(int(post_id))
 		s = ",".join(["%s" %i for i in post.tags])
-		postform = bforms.EditForm(initial={'title':post.title,'content':post.content,'tags':s})
+		postform = bforms.EditForm(initial={'article':post.article,'draft':post.draft,'title':post.title,'content':post.content,'tags':s})
 		if request.method == 'POST':
 			postform = bforms.EditForm(request.POST)
 			if postform.is_valid():

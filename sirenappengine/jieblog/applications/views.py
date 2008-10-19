@@ -50,7 +50,7 @@ def view_tag(request,post_tag):
 		show_edit = True
 	else:
 		show_edit = False
-	all_posts = models.Post.all().order('-post_on')
+	all_posts = models.Post.all().filter('draft',True).order('-post_on')
 	tag_posts = []
 	for post in all_posts:
 		if post_tag in post.tags:
@@ -86,7 +86,7 @@ def index(request,page=0):
 	show_next = False
 	all_posts = models.Post.all()
 	max_page = (all_posts.count()-1) / posts_per_page
-	posts = all_posts.order('-post_on').fetch(posts_per_page, offset = page * posts_per_page)
+	posts = all_posts.filter('draft',True).order('-post_on').fetch(posts_per_page, offset = page * posts_per_page)
 	show_prev = not (page == 0)
 	show_next = not (page == max_page)
 	if not posts:
@@ -137,12 +137,12 @@ def comment(request, post_id):
 				return HttpResponseRedirect('/post/%s'%post_id)
 		else:
 			commentform = bforms.CommentForm()
-	the_quotation=[]
-	quotation = models.Quotation.all()
-	for quo in quotation:
-		the_quotation.append(quo.content)
-	text_quo = random.choice(the_quotation)
-	payload = dict(text_quo=text_quo,greeting=greeting,show_edit=show_edit,post=post,commentform=commentform,comments=comments)
+#	the_quotation=[]
+#	quotation = models.Quotation.all()
+#	for quo in quotation:
+#		the_quotation.append(quo.content)
+#	text_quo = random.choice(the_quotation)
+	payload = dict(greeting=greeting,show_edit=show_edit,post=post,commentform=commentform,comments=comments)
 	return render('comment.html', payload)
 	
 def add_site_link(request):
