@@ -4,7 +4,8 @@ from jieblog.applications import bforms
 from google.appengine.api import users
 from google.appengine.ext import db
 import random
-
+from google.appengine.api import urlfetch
+import hashlib,urllib
 from funcs import render
 
 def edit_feature(request,feature_list_id):
@@ -254,3 +255,10 @@ def filedelete(request,the_key):
 	if the_file and the_file.owner == user or users.is_current_user_admin():
 		the_file.delete()
 	return HttpResponseRedirect('/filelist')
+
+def gravatar(request):
+	email = "lucidanui@gmail.com"
+	gravatar_image = "http://www.gravatar.com/avatar.php?"
+	gravatar_image += urllib.urlencode({'gravatar_id':hashlib.md5(email).hexdigest()})
+	payload = dict(gravatar_image=gravatar_image)
+	return render('gravatar.html',payload)

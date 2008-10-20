@@ -71,6 +71,7 @@ class Comments(db.Model):
 	comments_content = db.TextProperty()
 	comments_author_link = db.LinkProperty()
 	comments_post_on = db.DateTimeProperty(auto_now_add=True)
+	comments_gravatar = db.StringProperty()
 	def get_comments_nickname(self):
 		return self.comments_author.nickname()
 

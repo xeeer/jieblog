@@ -33,5 +33,7 @@ urlpatterns = patterns('',
     (r'^list/(?P<page>[^\.^/]+)/$', 'jieblog.applications.background.list_post'),
     (r'^remove/(?P<post_id>[^\.^/]+)/$', 'jieblog.applications.background.delete_post'),
     (r'^create/$', 'jieblog.applications.background.create'),
-    )
+#test content
+    (r'^gravatar/$','jieblog.applications.views.gravatar'),    
+)
 
