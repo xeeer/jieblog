@@ -1,4 +1,5 @@
 from google.appengine.ext import db
+import hashlib,urllib
 
 class ConfigDB(db.Model):
 	name = db.StringProperty()
@@ -71,9 +72,15 @@ class Comments(db.Model):
 	comments_content = db.TextProperty()
 	comments_author_link = db.LinkProperty()
 	comments_post_on = db.DateTimeProperty(auto_now_add=True)
-	comments_gravatar = db.StringProperty()
 	def get_comments_nickname(self):
 		return self.comments_author.nickname()
+	def get_gravatar_url(self):
+		gravatar_image = "http://www.gravatar.com/avatar.php?"
+		enmail = str(self.comments_author.email())
+		default = "http://blzinsider.cn/icons/38.png"
+		size = 16
+		gravatar_image += urllib.urlencode({'gravatar_id':hashlib.md5(enmail).hexdigest(),'default':default,'size':str(size)})
+		return gravatar_image
 
 class FileUpload(db.Model):
 	owner = db.UserProperty()
