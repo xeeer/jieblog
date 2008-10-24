@@ -242,6 +242,7 @@ a:visited {
 
 .widget-content {
 	padding: 5px;
+	font-size: 11px;
 }
 
 .widget-title2 {
@@ -296,7 +297,6 @@ a:visited {
 
 #site-link a{
 	text-decoration: none;
-	font-size: 11px;
 	margin-left: 25px;
 	background: url(/icons/35.png) no-repeat;
 	padding-left: 20px;
@@ -304,10 +304,6 @@ a:visited {
 }
 #site-link a:hover {
 	background: url(/icons/33.png) no-repeat;
-}
-
-#right-bar a:hover {
-	text-decoration: underline;
 }
 
 #right-bar ul {
@@ -409,15 +405,13 @@ img {
 }
 
 #tags_cloud a {
-	font-size: 12px;
 	color: #fff;
 	text-decoration: none;
 	font-family: 'Trebuchet MS','Microsoft YaHei';
 }
 
 #tags_cloud a:hover {
-	background-color: #000;
-	color: #fff;	
+	color: #ffcc66;
 }
 
 .widget-title3 {
