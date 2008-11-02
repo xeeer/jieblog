@@ -60,8 +60,7 @@ blockquote {
 	float: right;
 	list-style: none;	
       	background-color: #a2bae7;
-	height: 20px;
-	padding: 0 7px 0 7px;
+	padding: 0px 7px 2px 7px;
 	margin-right: 5px;
 	-moz-border-radius: 0 0 6px 6px;
 	border-bottom: 2px solid #fff;
