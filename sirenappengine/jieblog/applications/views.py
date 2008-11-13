@@ -144,21 +144,6 @@ def comment(request, post_id):
 	payload = dict(greeting=greeting,show_edit=show_edit,post=post,commentform=commentform,comments=comments)
 	return render('comment.html', payload)
 	
-def add_site_link(request):
-	user = users.get_current_user()
-	if users.is_current_user_admin():
-		if request.method == 'POST':
-			sitelinkform = bforms.SiteLinkForm(request.POST)
-			if sitelinkform.is_valid():
-				sitelinkform.save()
-				return HttpResponseRedirect('/')	
-		else:
-			sitelinkform = bforms.SiteLinkForm()
-	else:
-		return HttpResponseRedirect('/')	
-	payload = dict(sitelinkform=sitelinkform)
-	return render('sitelinkadmin.html', payload)
-	
 def site_link(request):
 	sitelink = models.SiteLink.all()
 	payload = dict(sitelink=sitelink)

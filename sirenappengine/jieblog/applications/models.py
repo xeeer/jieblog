@@ -4,7 +4,7 @@ import hashlib,urllib
 class ConfigDB(db.Model):
 	name = db.StringProperty()
 	subtitle = db.StringProperty()
-	post_per_page = db.IntegerProperty()
+	post_per_page = db.StringProperty()
 	
 	def get_config_url (self):
 		return '%s' %self.key().id()

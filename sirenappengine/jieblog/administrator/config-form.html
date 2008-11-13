@@ -12,9 +12,18 @@
 </div>
 <div id="main">
 <div class='box'>
+	<div class='admin-widget'>
 	<form method="post" action="#" id="config_form" name="config">
 		{{configform.as_p}}
 		<input type="submit" name="submit" value="提交" id="submit"/>
 	</form>
+	</div>
+	<div class='adminwidget'>
+	<form action="." method="post">
+		{{sitelinkform.as_p}}
+	<input type="submit" name="createlink" value="createlink" />
+	<input type="reset" name="reset" value="Reset" />
+	</form>
+	</div>
 </div>
 {% endblock%}

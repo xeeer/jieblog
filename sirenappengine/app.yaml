@@ -21,6 +21,9 @@ handlers:
 - url: /stylesheets
   static_dir: stylesheets
 
+- url: /scripts
+  static_dir: scripts
+
 - url: /rich_text_editor
   static_dir: rich_text_editor
 

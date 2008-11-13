@@ -23,7 +23,7 @@
 		animate: true,
 		dompath: true,
 		focusAtStart: true,
-		handleSubmit: true
+		handleSubmit: false,
 	};
 
 	var state = 'off';
@@ -59,7 +59,7 @@
 			} else {
 				state = 'on';
 				YAHOO.log('Show the Code Editor', 'info', 'example');
-				this.cleanHTML();
+				this.getEditorHTML();
 				YAHOO.log('Save the Editors HTML', 'info', 'example');
 				Dom.addClass(iframe, 'editor-hidden');
 				Dom.removeClass(ta, 'editor-hidden');
