@@ -25,12 +25,12 @@ blockquote {
 	border-left: 3px solid #58bf2f;
 	background-color: #eeffee;
 	padding-left: 5px;
+	margin: 10px;
 }
 
 
 #text_quo {
 	font-size: 11px;
-	color: #fff;
 }
 
 #header {
@@ -50,26 +50,28 @@ blockquote {
 }
 
 #article-list{
-    	margin-right: 15px;
+	margin-right: 15px;
 }
 
 #article-list li{
 	float: right;
 	list-style: none;	
-      	background-color: #a2bae7;
-	padding: 0px 7px 2px 7px;
+	background-color: #a2bae7;
+	padding: 0px 7px 0px 7px;
 	margin-right: 5px;
-	-moz-border-radius: 0 0 6px 6px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-bottom-left-radius: 5px 5px;
+	-webkit-border-bottom-right-radius: 5px 5px;
 	border-bottom: 2px solid #fff;
 	border-left: 2px solid #fff;
-	border-right: 2px solid #fff;  
+	border-right: 2px solid #fff;
 }
 
 #article-list a {
 	color: #fff;
 	font-size: 11px;
 	text-decoration: none;
-        font-weight: bold;
+	font-weight: bolder;
 	font-family: 'Trebuchet MS',Tahoma,Verdana,'Microsoft YaHei';
 }
 
@@ -117,6 +119,7 @@ blockquote {
 	-webkit-border-bottom-right-radius: 10px 10px;
 	-webkit-border-top-left-radius: 10px 10px; 
 	-webkit-border-top-right-radius: 10px 10px;
+	border:3px solid #fff;
 }
 
 #bottom {
