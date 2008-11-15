@@ -11,9 +11,8 @@
 .dec{color:#606}
 
 pre.prettyprint{ 
-					padding:2px;
+					padding:5px;
 					border-left:3px solid #7755aa;
-					padding-left: 5px
 					margin: 10px;
 				}
 @media print{

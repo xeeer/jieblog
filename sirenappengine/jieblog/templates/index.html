@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 
 {% block contents %}
-
-	<div class="container">
 			{% include 'header.html' %}
 			
 			{% include 'right_bar.html' %}
+			{% include 'right_bar2.html' %}
 
 			{% for post in posts %}
 				{% include 'post.html' %}	
@@ -34,5 +33,5 @@
 		</div>
 		
 		{% include 'bottom.html' %}
-	</div>
+
 {% endblock %}

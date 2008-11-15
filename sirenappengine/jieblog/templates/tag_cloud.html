@@ -2,7 +2,7 @@
 	<div class="widget-title3">Tags Cloud</div>
 	<div class="widget-content">
 	{% for tag in tag_cloud %}
-		<a href="../../tag/{{tag}}">{{tag.name}}</a>
+		<span class="tag-link"><a href="../../tag/{{tag}}">{{tag.name}}</a></span>
 	{% endfor %}
 	</div>
 </div>

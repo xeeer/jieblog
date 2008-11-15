@@ -55,6 +55,7 @@ class Post(db.Model):
 	comments_count = db.IntegerProperty(0)
 	article = db.BooleanProperty()
 	draft = db.BooleanProperty(default=False)
+
 	
 	def __str__ (self):
 		return '%s' %self.title
@@ -64,6 +65,7 @@ class Post(db.Model):
 		
 	def get_comments_count(self):
 		return Comments.all().filter("post",self).count()
+
 			
 class Comments(db.Model):
 	post = db.ReferenceProperty(Post)

@@ -1,5 +1,5 @@
 <div id="feature-list-all">
-	<div class="feature-list-title">Feature List</div>
+	<div class="widget-title4">Feature List</div>
 	<div class="widget-content">
 	{% for link in featurelink %}
 		<div class="feature-list">
@@ -8,7 +8,6 @@
 			{% else %}
 				<img class="icons" src="../../icons/11.png"/>
 			{% endif %}
-			<span class="blankspace"/>
 			<span class="feature-span">{{link.title}}</span>
 			<span class="feature-span">{{link.post_on|date:"Y-m-d"}}</span>
 			{% if show_edit%}

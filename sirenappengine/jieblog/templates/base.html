@@ -22,7 +22,9 @@ pageTracker._trackPageview();
 		{% block title %}{% endblock %}
 	</head>
 	
-	<body onload="prettyPrint()">		
-		{% block contents %}{% endblock %}
+	<body onload="prettyPrint()">
+		<div id="container">
+			{% block contents %}{% endblock %}
+		</div>
 	</body>
 </html>
