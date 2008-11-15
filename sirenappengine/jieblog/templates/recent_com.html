@@ -1,0 +1,9 @@
+{% load filter %}
+	<div id="comments-comment">
+		<div id="comments">
+				<div id="widget-comment">Recent Comments</div>
+				{% for comment in recent_comments %}
+					{% include 'comm.html' %}
+				{% endfor %}
+		</div>
+	</div>
