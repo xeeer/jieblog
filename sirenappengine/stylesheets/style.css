@@ -256,6 +256,11 @@ a:visited {
 #power-by {	
 	background: #fff7d7;
 	border: 2px solid #fff;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-bottom-left-radius: 8px 8px; 
+	-webkit-border-bottom-right-radius: 8px 8px;
+	-webkit-border-top-left-radius: 8px 8px; 
+	-webkit-border-top-right-radius: 8px 8px;
 }
 
 .widget-content {
@@ -264,40 +269,39 @@ a:visited {
 	font-family: Tahoma;
 }
 
-.widget-title {
+.widget-title {	
+	text-align: left;
+	font-size: 11px;
+	font-weight: bold;
+	color: #fff;
+	padding-left: 5px;
+	-moz-border-radius: 6px 6px 0px 0px;
+	-webkit-border-top-left-radius: 6px 6px; 
+	-webkit-border-top-right-radius: 6px 6px;
+}
+
+#widget-site-link {
 	background-color: #4e9a06;
-	text-align: left;
-	font-size: 11px;
-	font-weight: bold;
-	color: #fff;
-	padding-left: 5px;
 }
 
-.widget-title2 {
+#widget-power-by {
 	background: #ffcc66;
-	text-align: left;
-	font-size: 11px;
-	font-weight: bold;
-	color: #fff;
-	padding-left: 5px;
 }
 
-.widget-title3 {
-	background: #204a87;
-	text-align: left;
-	font-size: 11px;
-	font-weight: bold;
-	color: #fff;
-	padding-left: 5px;
-}
-
-.widget-title4 {
+#widget-feature-list{
 	background-color: #5c3566;
-	text-align: left;
-	font-size: 11px;
-	font-weight: bold;
-	color: #fff;
-	padding-left: 5px;
+}
+
+#widget-tags-cloud {
+	background-color: #204a87;
+}
+
+#widget-right-top {
+	background-color: #8f5902;
+}
+
+#widget-comment-form {
+	background-color: #4e9a06;
 }
 
 #gae-icon{
@@ -327,6 +331,11 @@ a:visited {
 	background-color: #ddf8cc;
 	margin-bottom: 10px;
 	border: 2px solid #fff;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-bottom-left-radius: 8px 8px; 
+	-webkit-border-bottom-right-radius: 8px 8px;
+	-webkit-border-top-left-radius: 8px 8px; 
+	-webkit-border-top-right-radius: 8px 8px;
 }
 
 .feature-span {
@@ -338,6 +347,11 @@ a:visited {
 	margin-bottom: 10px;
 	border: 2px solid #fff;
 	color: #fff;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-bottom-left-radius: 8px 8px; 
+	-webkit-border-bottom-right-radius: 8px 8px;
+	-webkit-border-top-left-radius: 8px 8px; 
+	-webkit-border-top-right-radius: 8px 8px;
 }
 
 
@@ -356,11 +370,31 @@ a:visited {
 	background-color: #b5edbc;
 }
 
+#sider-bar {
+	width: 430px;
+	float: right;
+}
+
+#right-top {
+	width: 405px;
+	height: auto;
+	border: 2px solid #fff;
+	margin-top: 10px;
+	margin-left: 10px;
+	background-color: #e9b96e;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-bottom-left-radius: 8px 8px; 
+	-webkit-border-bottom-right-radius: 8px 8px;
+	-webkit-border-top-left-radius: 8px 8px; 
+	-webkit-border-top-right-radius: 8px 8px;
+}
+
 #right-bar ul {
 	display: inline;
 	margin: 0;
 	padding: 0;
 }
+
 #right-bar li {
 	line-height: 150%;
 	text-align: left;	
@@ -377,33 +411,37 @@ a:visited {
 	width: 200px;
 	float: right;
 	text-align: left;
-
+	
 }
 
 #comments {
 	margin-bottom: 20px;
 	background-color: #fff7d7;
 	border:2px solid #fff;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-bottom-left-radius: 8px 8px; 
+	-webkit-border-bottom-right-radius: 8px 8px;
+	-webkit-border-top-left-radius: 8px 8px; 
+	-webkit-border-top-right-radius: 8px 8px;
 }
 
 #comments-form {
 	font-size: 10px;
 	background-color: #ddf8cc;
 	border:2px solid #fff;
-	
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-bottom-left-radius: 8px 8px; 
+	-webkit-border-bottom-right-radius: 8px 8px;
+	-webkit-border-top-left-radius: 8px 8px; 
+	-webkit-border-top-right-radius: 8px 8px;
 }
 
 #comments-form li {
 	list-style-type:none;
 }
 
-#widget-comment {
+#widget-recent-comment {
 	background-color: #eb9000;
-	text-align: left;
-	font-size: 11px;
-	font-weight: bold;
-	color: #fff;
-	padding-left: 5px;
 }
 
 .comment-content {
@@ -429,6 +467,11 @@ img {
 	background-color: #3465a4;
 	margin-bottom: 10px;
 	border: 2px solid #fff;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-bottom-left-radius: 8px 8px; 
+	-webkit-border-bottom-right-radius: 8px 8px;
+	-webkit-border-top-left-radius: 8px 8px; 
+	-webkit-border-top-right-radius: 8px 8px;
 }
 
 #tags_cloud a {
@@ -457,18 +500,18 @@ img {
 }
 
 #id_comments_content {
-	width: 230px;
+	width: 190px;
 	font-family: 'Trebuchet MS','Microsoft YaHei';
 }
 
 #id_comments_author { 
-	width: 200px;
+	width: 190px;
 	font-size: 10px;
 	font-family: Tahoma,Consolas;
 }
 
 #id_comments_author_url {
-	width: 200px;
+	width: 190px;
 	font-size: 10px; 
 	font-family: Tahoma,Consolas;
 }

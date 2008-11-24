@@ -81,3 +81,5 @@ def login(request):
 				  users.create_login_url("/"))
 	payload = dict(greeting=greeting)
 	return render('admin-login.html',payload)
+
+	
