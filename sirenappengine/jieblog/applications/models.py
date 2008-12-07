@@ -28,6 +28,7 @@ class SiteLink(db.Model):
 
 class FeatureLink(db.Model):
 	title = db.StringProperty()
+	link = db.LinkProperty()
 	realized = db.BooleanProperty()
 	summary = db.TextProperty()
 	post_on = db.DateTimeProperty(auto_now_add=True)
@@ -79,8 +80,8 @@ class Comments(db.Model):
 	def get_gravatar_url(self):
 		gravatar_image = "http://www.gravatar.com/avatar.php?"
 		enmail = str(self.comments_author.email())
-		default = "http://blzinsider.cn/icons/38.png"
-		size = 16
+		default = "http://blzinsider.cn/icons/unknow.jpeg"
+		size = 32
 		gravatar_image += urllib.urlencode({'gravatar_id':hashlib.md5(enmail).hexdigest(),'default':default,'size':str(size)})
 		return gravatar_image
 

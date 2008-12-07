@@ -1,21 +1,10 @@
-<div id="feature-list-all">
-	<div class="widget-title" id="widget-feature-list">Feature List</div>
-	<div class="widget-content">
-	{% for link in featurelink %}
-		<div class="feature-list">
-			{% if link.realized %}
-				<img class="icons" src="../../icons/10.png"/>
-			{% else %}
-				<img class="icons" src="../../icons/11.png"/>
-			{% endif %}
-			<span class="feature-span">{{link.title}}</span>
-			<span class="feature-span">{{link.post_on|date:"Y-m-d"}}</span>
-			{% if show_edit%}
-			<span class="feature-span">
-				<a href="../../editfeature/{{link.get_feature_url}}">edit</a>
-			</span>
-			{% endif %}
-		</div>
-	{% endfor %}
+<div class="widget">
+	<div class="widget-title" id="widget-favorite-list">Project List</div>
+	<div class="widget-content" id="feature-link">
+	<ul>
+		{% for link in featurelink %}
+		<li><a href="{{link.link}}" title="{{link.summary}}">{{link.title}}</a></li>
+		{% endfor %}
+	</ul>
 	</div>
 </div>

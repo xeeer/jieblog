@@ -1,10 +1,11 @@
 {% load filter %}
 	<div class="comment">
-		<div class="comment-info">
-			<span class="comment-time">{{comment.comments_post_on|timezone:8|date:"Y-m-d H:i:s"}}</span>
-			<span class="comment-author"><a href="{{ comment.comments_author_link }}"><img class="icons" alt="gravatar" src="{{ comment.get_gravatar_url }}"/></a><a href="{{ comment.comments_author_class.user_url }}">{{comment.comments_author|jieblognickname}}</a></span>
+		<div class="icon">
+			<img class="icons" alt="gravatar" src="{{ comment.get_gravatar_url }}" ></img>
 		</div>
+		<div class="arrow"></div>
 		<div class="comment-content">
-			{{comment.comments_content}}
+			<div class="comment-info">Comment By <a href="{{ comment.comments_author_link }}">{{comment.comments_author|jieblognickname}}</a> {{comment.comments_post_on|timezone:8|date:"Y-m-d H:i:s"}}</div>
+			<div class="each-comment-content">{{comment.comments_content}}</div>
 		</div>
 	</div>

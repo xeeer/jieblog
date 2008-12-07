@@ -2,17 +2,21 @@
 
 {% block contents %}
 
-	{% include 'header.html' %}	
-	<div id="comments-comment">
-		<div id="comments">
-				<div id="widget-comment">Comment</div>
-				{% for comment in comments %}
-					{% include 'comm.html' %}
-				{% endfor %}
-		</div>	
-		{% include 'comment-form.html' %}
-	</div>
+	{% include 'header.html' %}
+	{% include 'sider_bar.html' %}
+	<div id="main_bar">
 	{% include 'post.html' %}
+	
+		<div id="comments-comment">
+			<div id="comments">
+					<div id="widget-comment">Comment</div>
+					{% for comment in comments %}
+						{% include 'comm.html' %}
+					{% endfor %}
+			</div>	
+			{% include 'comment-form.html' %}
+		</div>
+	</div>
 	{% include 'bottom.html' %}
 
 {% endblock %}

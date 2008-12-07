@@ -1,24 +1,24 @@
 <div id="header">
-	<div id='article-list'>
-		<ul>
-			<li>{{greeting}}</li>
-		{% if articles %}
-		{% for article in articles %}
-			<li><a href='/post/{{article.get_absolute_url}}'>{{article.title}}</a></li>
-		{% endfor %}
-		{% endif%}
-			<li><a href='http://meja.blzinsider.cn' title='meja'>Meja</a></li>
-			<li><a href='/feeds' title='RSS'>RSS</a></li>
-		</ul>
-	</div>
 
-
-	<div id="blog-title">
+	<h3 id="blog-title">
 		<a href="/">JIEblog</a>
-	</div>
+	</h3>
 		
 	<div id='text_quo'>
 		A memorandum of Geek
 	</div>
 
+</div>
+
+<div id="nav">
+		<ul id='article-list'>
+			<li class="current-page "><a href='/' title='Home'>Home</a></li>
+			<li class="not-current-page">{{greeting}}</li>
+			{% if articles %}
+			{% for article in articles %}
+			<li class="not-current-page"><a href='/post/{{article.get_absolute_url}}'>{{article.title}}</a></li>
+			{% endfor %}
+			{% endif%}			
+			<li class="not-current-page"><a href='/feeds' title='RSS'>RSS</a></li>			
+		</ul>
 </div>

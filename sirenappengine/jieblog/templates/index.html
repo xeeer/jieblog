@@ -3,9 +3,12 @@
 {% block contents %}
 			{% include 'header.html' %}
 			{% include 'sider_bar.html'%}
+			<div id="main_bar">
 			{% for post in posts %}
-				{% include 'post.html' %}	
+				{% include 'post.html' %}
 			{% endfor %}
+			</div>
+			
 
 		<div id="paginate">
 			{% if show_page_panel %}
@@ -16,14 +19,14 @@
 					</a>
 				{% endif %}
 	
-				{% if show_prev or show_next %}
-					{{  current_page }}
-				{% endif %}
-			
 				{% if show_next %}
 					<a href="/page/{{ next }}">
 						<span id="next" class="paginate-button">NEXT</span>
 					</a>
+				{% endif %}
+				
+				{% if show_prev or show_next %}
+					{{  current_page }}
 				{% endif %}
 				
 			{% endif %}
