@@ -96,30 +96,16 @@ def index(request,page=0):
 		show_prev = False
 		show_next = False
 	current_page = page + 1
-	
-#	READER_FEED_URL = 'http://www.google.com/reader/public/atom/user%2F11467168420066230959%2Fstate%2Fcom.google%2Fbroadcast'
-#	result = urlfetch.fetch(READER_FEED_URL)
 
-#if result.status_code == 200:
-#		READER_FEED_XML = minidom.parseString(result.content)
-#		FEED_ITEM = READER_FEED_XML.getElementsByTagName('entry')
-#		for i in FEED_ITEM:
-#			d = i.getElementsByTagName("title")
-#			print d.value
-	
-#	the_quotation = []
-#	quotation = models.Quotation.all()
-#	for quo in quotation:
-#		the_quotation.append(quo.content)
-#	text_quo = random.choice(the_quotation)
 	comments = models.Comments.all()
-	recent_comments = comments.order('-comments_post_on').fetch(6)
+#	recent_comments = comments.order('-comments_post_on').fetch(6)
 	sitelink = models.SiteLink.all()
 	featurelink = models.FeatureLink.all()
 	tag_cloud = models.BlogTag.all()
 	articles =  models.Post.all().filter('article',True)
-#	payload = dict(articles=articles,text_quo=text_quo,featurelink=featurelink,tag_cloud=tag_cloud,sitelink=sitelink,show_edit=show_edit,greeting=greeting,posts = posts,show_prev = show_prev,show_next = show_next,show_page_panel = show_prev or show_next,prev = page - 1,next = page + 1,current_page = current_page)
-	payload = dict(recent_comments=recent_comments,articles=articles,featurelink=featurelink,tag_cloud=tag_cloud,sitelink=sitelink,show_edit=show_edit,greeting=greeting,posts = posts,show_prev = show_prev,show_next = show_next,show_page_panel = show_prev or show_next,prev = page - 1,next = page + 1,current_page = current_page)
+	friendsconnect = True
+
+	payload = dict(friendsconnect=friendsconnect,articles=articles,featurelink=featurelink,tag_cloud=tag_cloud,sitelink=sitelink,show_edit=show_edit,greeting=greeting,posts = posts,show_prev = show_prev,show_next = show_next,show_page_panel = show_prev or show_next,prev = page - 1,next = page + 1,current_page = current_page)
 	return render('index.html', payload)
 
 def comment(request, post_id):
@@ -153,12 +139,13 @@ def comment(request, post_id):
 				return HttpResponseRedirect('/post/%s'%post_id)
 		else:
 			commentform = bforms.CommentForm()
-#	the_quotation=[]
-#	quotation = models.Quotation.all()
-#	for quo in quotation:
-#		the_quotation.append(quo.content)
-#	text_quo = random.choice(the_quotation)
-	payload = dict(greeting=greeting,show_edit=show_edit,post=post,commentform=commentform,comments=comments)
+	
+	sitelink = models.SiteLink.all()
+	featurelink = models.FeatureLink.all()
+	tag_cloud = models.BlogTag.all()
+	articles =  models.Post.all().filter('article',True)
+	friendsconnect = False
+	payload = dict(friendsconnect=friendsconnect,articles=articles,featurelink=featurelink,tag_cloud=tag_cloud,sitelink=sitelink,greeting=greeting,show_edit=show_edit,post=post,commentform=commentform,comments=comments)
 	return render('comment.html', payload)
 	
 def site_link(request):

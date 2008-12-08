@@ -12,6 +12,7 @@ pre.prettyprint{
 	border-left: 3px solid #7755aa;
 	background-color: #eeeeff;
 	font-family: Courier New, Lucida Console, Consolas, Courier;
+	overflow: auto;
 }
 
 .error_me {
@@ -191,7 +192,7 @@ a:visited {
 .post-content {
 	padding: 10px;
 	font-size: 12px;
-	line-height: 18px;
+	line-height: 20px;
 	letter-spacing: 0.5px;
 }
 
@@ -311,7 +312,7 @@ a:visited {
 	background-color: #3465a4;
 }
 .widget-w {
-	width: 345px;
+	width: 340px;
 }
 .widget {
 	width: 160px;
@@ -450,8 +451,9 @@ a:visited {
 }
 
 #sider-bar {
-	width: 350px;
+	width: 345px;
 	float: right;
+	padding-top: 10px;
 }
 
 #right-top {

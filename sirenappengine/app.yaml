@@ -11,7 +11,18 @@ handlers:
 
 - url: /images
   static_dir: images
+  
+- url: /images
+  static_dir: images
+  
+- url: /rpc_relay.html
+  static_files: static/rpc_relay.html
+  upload: static/rpc_relay.html
 
+- url: /canvas.html
+  static_files: static/canvas.html
+  upload: static/canvas.html 
+  
 - url: /icons
   static_dir: icons
 
