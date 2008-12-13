@@ -98,14 +98,14 @@ def index(request,page=0):
 	current_page = page + 1
 
 	comments = models.Comments.all()
-#	recent_comments = comments.order('-comments_post_on').fetch(6)
+	recent_comments = comments.order('-comments_post_on').fetch(5)
 	sitelink = models.SiteLink.all()
 	featurelink = models.FeatureLink.all()
 	tag_cloud = models.BlogTag.all()
 	articles =  models.Post.all().filter('article',True)
 	friendsconnect = True
 
-	payload = dict(friendsconnect=friendsconnect,articles=articles,featurelink=featurelink,tag_cloud=tag_cloud,sitelink=sitelink,show_edit=show_edit,greeting=greeting,posts = posts,show_prev = show_prev,show_next = show_next,show_page_panel = show_prev or show_next,prev = page - 1,next = page + 1,current_page = current_page)
+	payload = dict(recent_comments=recent_comments,friendsconnect=friendsconnect,articles=articles,featurelink=featurelink,tag_cloud=tag_cloud,sitelink=sitelink,show_edit=show_edit,greeting=greeting,posts = posts,show_prev = show_prev,show_next = show_next,show_page_panel = show_prev or show_next,prev = page - 1,next = page + 1,current_page = current_page)
 	return render('index.html', payload)
 
 def comment(request, post_id):

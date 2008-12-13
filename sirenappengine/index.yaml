@@ -10,13 +10,13 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-# Used 463 times in query history.
+# Used 497 times in query history.
 - kind: Comments
   properties:
   - name: comments_post_on
     direction: desc
 
-# Used 463 times in query history.
+# Used 557 times in query history.
 - kind: Post
   properties:
   - name: draft
