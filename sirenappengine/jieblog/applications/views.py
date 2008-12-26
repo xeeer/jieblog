@@ -4,11 +4,12 @@ from jieblog.applications import bforms
 from google.appengine.api import users
 from google.appengine.ext import db
 import random
-from funcs import render
+from funcs import render, get_data
 from google.appengine.api import urlfetch
 from xml.dom import minidom
 import urllib2
 from datetime import datetime
+
 
 def edit_feature(request,feature_list_id):
 	user = users.get_current_user()
@@ -65,7 +66,7 @@ def view_tag(request,post_tag):
 			
 
 def feeds(request):
-	posts = models.Post.all()
+	posts = get_data("Post",60)
 	latest_post = posts[posts.count()-1]
 	posts.order('-post_on')
 	payload = dict(posts = posts,latest_post = latest_post)
@@ -87,7 +88,8 @@ def index(request,page=0):
 	posts_per_page = 6
 	show_prev = False
 	show_next = False
-	all_posts = models.Post.all()
+#	all_posts = models.Post.all()
+	all_posts = get_data("Post",60)
 	max_page = (all_posts.count()-1) / posts_per_page
 	posts = all_posts.filter('draft',True).order('-post_on').fetch(posts_per_page, offset = page * posts_per_page)
 	show_prev = not (page == 0)

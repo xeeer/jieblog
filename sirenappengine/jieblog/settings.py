@@ -1,7 +1,7 @@
 # Django settings for pollango project.
 import os
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 # Local time zone for this installation. Choices can be found here:
