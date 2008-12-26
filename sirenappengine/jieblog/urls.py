@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     (r'^feeds/$', 'jieblog.applications.views.feeds'),
     (r'^tag/(?P<post_tag>[^\.^/]+)/$', 'jieblog.applications.views.view_tag'),
 # XML-RPC
-     (r'^rpc/', 'jieblog.applications.xmlrpc.rpc_handler'),
+#   (r'^rpc/', 'jieblog.applications.xmlrpc.rpc_handler'),
 # Administration URL
     (r'^login/$', 'jieblog.applications.background.login'),    
     (r'^configdb/(?P<config_id>[^\.^/]+)/$', 'jieblog.applications.configdb.configdb'),

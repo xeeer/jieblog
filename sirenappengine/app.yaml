@@ -21,7 +21,11 @@ handlers:
 
 - url: /canvas.html
   static_files: static/canvas.html
-  upload: static/canvas.html 
+  upload: static/canvas.html
+  
+- url: /player.html
+  static_files: static/player.html
+  upload: static/player.html
   
 - url: /icons
   static_dir: icons
