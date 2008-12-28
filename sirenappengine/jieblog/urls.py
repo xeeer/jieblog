@@ -21,8 +21,12 @@ urlpatterns = patterns('',
     (r'^edit/(?P<post_id>[^\.^/]+)/$', 'jieblog.applications.background.edit'),
     (r'^editfeature/(?P<feature_list_id>[^\.^/]+)/$', 'jieblog.applications.views.edit_feature'),
     (r'^editquotation/(?P<quotation_id>[^\.^/]+)/$', 'jieblog.applications.views.edit_quotation'),
-    (r'^feeds/$', 'jieblog.applications.views.feeds'),
     (r'^tag/(?P<post_tag>[^\.^/]+)/$', 'jieblog.applications.views.view_tag'),
+
+#sitemap and feed
+    (r'^feeds/$', 'jieblog.applications.views.feeds'),
+    (r'^sitemap/$', 'jieblog.applications.views.sitemap'),
+
 # XML-RPC
 #   (r'^rpc/', 'jieblog.applications.xmlrpc.rpc_handler'),
 # Administration URL

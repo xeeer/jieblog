@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding='utf-8'?>
+﻿<?xml version="1.0" encoding='utf-8'?>
    <feed xmlns="http://www.w3.org/2005/Atom">
-{% load filter %}
+	{% load filter %}
 	 <title>JIEblog System</title>
 	 <link href="http://blzinsider.cn/"/>
-	 <updated>{{latest_post.post_on|timezone:8|date:"Y-m-d H:i:s"}}</updated>
+	 <updated>{{latest_post.post_on|get_rfc_datetime}}</updated>
 	 <author>
 	   <name>lucidanui</name>
 	 </author>
-	 <id>blzinsider.cn atom v1.0</id>
+	 <id>http://jieblog.appspot.com/</id>
 	 
 	{% for post in posts %}
 	 <entry>
@@ -18,9 +18,9 @@
 		{% for tag in post.tags%}
 			<category term='{{tag}}'/>
 		{% endfor %}
-	   <link href="http://blzinsider.cn/post/{{post.get_absolute_url}}"/>
+	   <link href="/post/{{post.get_absolute_url}}"/>
 	   <id>{{post.key}}</id>
-	   <updated>{{post.post_on|timezone:8|date:"Y-m-d H:i:s"}}</updated>
+	   <updated>{{post.post_on|get_rfc_datetime}}</updated>
 	   <summary type='html'><![CDATA[ {{post.content}}]]></summary>
 	   <content type='html'><![CDATA[ {{post.content}}]]></content>
 	 </entry>

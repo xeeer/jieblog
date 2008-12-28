@@ -302,7 +302,6 @@ a:visited {
 #right-bar2 {
 	text-align: center;
 	width: 160px;
-	height: 500px;
 	float: right;
 	display: block;
 	margin-right: 10px;
@@ -449,9 +448,9 @@ a:visited {
 }
 
 #sider-bar {
-	width: 345px;
+	width: 350px;
 	float: right;
-	padding-top: 10px;
+	background-color:  #b5edbc;
 }
 
 #right-top {

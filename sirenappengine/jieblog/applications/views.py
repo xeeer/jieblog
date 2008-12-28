@@ -4,7 +4,7 @@ from jieblog.applications import bforms
 from google.appengine.api import users
 from google.appengine.ext import db
 import random
-from funcs import render, get_data
+from funcs import render, getcached
 from google.appengine.api import urlfetch
 from xml.dom import minidom
 import urllib2
@@ -54,23 +54,40 @@ def view_tag(request,post_tag):
 		show_edit = True
 	else:
 		show_edit = False
-	all_posts = models.Post.all().filter('draft',True).order('-post_on')
+#	all_posts = models.Post.all().filter('draft',True).order('-post_on')
+	all_posts = getcached('Post', lambda: models.Post.all().filter('draft',True).order('-post_on'), expiration=3600)
 	tag_posts = []
 	for post in all_posts:
 		if post_tag in post.tags:
 			tag_posts.append(post)			
-	sitelink = models.SiteLink.all()
-	tag_cloud = models.BlogTag.all()
-	payload = dict(tag_cloud=tag_cloud,sitelink=sitelink,tag_posts = tag_posts,greeting=greeting,show_edit=show_edit)
+#	comments = models.Comments.all()
+	recent_comments= getcached('Comments', lambda: models.Comments.all().order('-comments_post_on').fetch(5), expiration=3600)
+#	recent_comments = comments.order('-comments_post_on').fetch(5)
+#	sitelink = models.SiteLink.all()
+	sitelink = getcached('SiteLink', lambda: models.SiteLink.all(), expiration=3600)
+#	featurelink = models.FeatureLink.all()
+	featurelink = getcached('FeatureLink', lambda: models.FeatureLink.all(), expiration=3600)
+#	tag_cloud = models.BlogTag.all()
+	tag_cloud = getcached('BlogTag', lambda: models.BlogTag.all(), expiration=3600)
+#	articles =  models.Post.all().filter('article',True)
+	articles = all_posts.filter('article',True)
+	payload = dict(recent_comments=recent_comments,featurelink=featurelink,tag_cloud=tag_cloud,sitelink=sitelink,tag_posts = tag_posts,greeting=greeting,show_edit=show_edit)
 	return render('tag.html',payload)
 			
 
 def feeds(request):
-	posts = get_data("Post",60)
+	posts =  getcached('Post', lambda: models.Post.all(), expiration=3600)
 	latest_post = posts[posts.count()-1]
 	posts.order('-post_on')
 	payload = dict(posts = posts,latest_post = latest_post)
 	return render('atom.xml',payload)
+	
+def sitemap(request):
+	posts =  getcached('Post', lambda: models.Post.all(), expiration=3600)
+	latest_post = posts[posts.count()-1]
+	posts.order('-post_on')
+	payload = dict(posts = posts,latest_post = latest_post)
+	return render('feed.xml',payload)
 
 def index(request,page=0):
 	user = users.get_current_user()
@@ -89,7 +106,7 @@ def index(request,page=0):
 	show_prev = False
 	show_next = False
 #	all_posts = models.Post.all()
-	all_posts = get_data("Post",60)
+	all_posts = getcached('Post', lambda: models.Post.all(), expiration=3600)
 	max_page = (all_posts.count()-1) / posts_per_page
 	posts = all_posts.filter('draft',True).order('-post_on').fetch(posts_per_page, offset = page * posts_per_page)
 	show_prev = not (page == 0)
@@ -99,12 +116,17 @@ def index(request,page=0):
 		show_next = False
 	current_page = page + 1
 
-	comments = models.Comments.all()
-	recent_comments = comments.order('-comments_post_on').fetch(5)
-	sitelink = models.SiteLink.all()
-	featurelink = models.FeatureLink.all()
-	tag_cloud = models.BlogTag.all()
-	articles =  models.Post.all().filter('article',True)
+#	comments = models.Comments.all()
+	recent_comments= getcached('Comments', lambda: models.Comments.all().order('-comments_post_on').fetch(5), expiration=3600)
+#	recent_comments = comments.order('-comments_post_on').fetch(5)
+#	sitelink = models.SiteLink.all()
+	sitelink = getcached('SiteLink', lambda: models.SiteLink.all(), expiration=3600)
+#	featurelink = models.FeatureLink.all()
+	featurelink = getcached('FeatureLink', lambda: models.FeatureLink.all(), expiration=3600)
+#	tag_cloud = models.BlogTag.all()
+	tag_cloud = getcached('BlogTag', lambda: models.BlogTag.all(), expiration=3600)
+#	articles =  models.Post.all().filter('article',True)
+	articles = all_posts.filter('article',True)
 	friendsconnect = True
 
 	payload = dict(recent_comments=recent_comments,friendsconnect=friendsconnect,articles=articles,featurelink=featurelink,tag_cloud=tag_cloud,sitelink=sitelink,show_edit=show_edit,greeting=greeting,posts = posts,show_prev = show_prev,show_next = show_next,show_page_panel = show_prev or show_next,prev = page - 1,next = page + 1,current_page = current_page)

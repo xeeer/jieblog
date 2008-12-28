@@ -1,6 +1,7 @@
 from django import template
 from datetime import datetime,timedelta
 from google.appengine.api import users
+import rfc3339
 register = template.Library()
 
 def timezone(value, offset):
@@ -13,3 +14,8 @@ def jieblognickname(value):
 	return nick[0]
 
 register.filter(jieblognickname)
+
+def get_rfc_datetime(datetime_data):
+	return rfc3339.rfc3339(datetime_data)
+	
+register.filter(get_rfc_datetime)

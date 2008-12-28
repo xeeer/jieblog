@@ -1,7 +1,27 @@
-	<div class="widget-w">
-		<div id="comments">
-				{% for comment in recent_comments %}
-					{% include 'comm.html' %}
-				{% endfor %}
+{% load filter %}
+<div class="recent_comments">
+{% for comment in recent_comments %}
+	<div class="recent_comment">
+
+		<div class="author_img" >	
+			<img alt="gravatar" src="{{ comment.get_gravatar_url }}" ></img>
+		</div>
+		
+		<div class="recent_comments_container">
+			<div class="recent_comments_info">
+				<b><a href="{{ comment.comments_author_link }}">
+					{{comment.comments_author|jieblognickname}}
+				</a>
+				
+				{{comment.comments_post_on|timezone:8|date:"Y-m-d H:i:s"}}
+				</b>
+			</div>
+			<div class="recent_comments_content">
+				{{comment.comments_content}}
+			</div>
 		</div>
 	</div>
+{% endfor %}
+
+
+</div>
