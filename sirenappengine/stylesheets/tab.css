@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+.usual {
+  color:#000;
+}
+.usual li { 
+  list-style:none; 
+  float:left;
+  font-family: Georgia,Arial, "MS Trebuchet", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+}
+.usual ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+.usual ul a {
+  display:block;
+  padding:4px 5px;
+  text-decoration:none!important;
+  border-top: 3px solid #fff;
+  margin-left:0;
+  color: #babdb6;
+}
+.usual ul a:hover {
+  color:#f57900;
+}
+.usual ul a.selected {
+  margin-bottom:0;
+  background-color: #e0ecff;
+  border-top: 3px solid #f57900;
+  color: #3465a4;
+}
+
+
+.tab {
+  clear: left;
+  background-color: #e0ecff;
+  padding:5px;
+}
+
+.recent_comments {
+  margin:0px;
+}
+.recent_comment {
+  margin-bottom:15px;
+}
+.author_img {
+  padding: 1px;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  float: left;
+  border: 1px solid #666;
+}
+.recent_comments_info {
+  font-size: 10px;
+  font-family: Georgia,Arial, "MS Trebuchet", sans-serif;
+}
+.recent_comments_info a {
+  text-decoration: none;
+  color: #000;
+}
+.recent_comments_info a:hover {
+  text-decoration: underline;
+}
+.recent_comments_content {
+  font-size: 11px;
+}
+.recent_comments_container {
+  margin-left:50px;
+}
+
+.widget-top {
+  background-color: #fff;
+}
