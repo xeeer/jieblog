@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding='utf-8'?>
+   <feed xmlns="http://www.w3.org/2005/Atom" rel="self">
+	{% load filter %}
+	 <title>JIEblog System</title>
+	 <link href="http://jieblog.appspot.com/"/>
+	 <updated>{{latest_post.post_on|get_rfc_datetime}}</updated>
+	 <author>
+	   <name>lucidanui</name>
+	 </author>
+	 <id>http://jieblog.appspot.com/</id>
+
+	{% for post in posts %}
+	 <entry>
+	   <title>{{post.title}}</title>
+		<author>
+			<name>lucidanui</name>
+		</author>
+		{% for tag in post.tags%}
+			<category term='{{tag}}'/>
+		{% endfor %}
+	   <link href="/post/{{post.get_absolute_url}}"/>
+	   <id>http://jieblog.appspot.com/post/{{post.get_absolute_url}}"</id>
+	   <updated>{{post.post_on|get_rfc_datetime}}</updated>
+	   <summary type='html'><![CDATA[ {{post.content}}]]></summary>
+	   <content type='html'><![CDATA[ {{post.content}}]]></content>
+	 </entry>
+	{% endfor %}
+   </feed>
