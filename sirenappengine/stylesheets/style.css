@@ -322,6 +322,7 @@ a:visited {
 	margin-bottom: 5px;
 }
 
+
 .widget-content {
 	padding: 5px;
 	font-size: 10px;
@@ -329,6 +330,7 @@ a:visited {
 	-moz-border-radius: 0px 0px 5px 5px;
 	-webkit-border-bottom-left-radius: 5px 5px; 
 	-webkit-border-bottom-right-radius: 5px 5px;
+	margin-top:0px;
 }
 
 .widget-title {
@@ -341,7 +343,14 @@ a:visited {
 	-moz-border-radius: 5px 5px 0px 0px;
 	-webkit-border-top-left-radius: 5px 5px; 
 	-webkit-border-top-right-radius: 5px 5px;
+	cursor: pointer;
+	margin-bottom: 0px;
+	background: #e9e7e7 url(/icons/toggle.png) no-repeat right -54px;
 }
+.widget-title.active {
+	background-position: right 3px;
+}
+
 
 #widget-site-link {
 	background-color: #4e9a06;
@@ -372,7 +381,6 @@ a:visited {
 }
 
 #gae-icon{
-	padding-bottom: 7px;
 }
 
 #user-admin {
