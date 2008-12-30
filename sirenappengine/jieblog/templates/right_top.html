@@ -6,37 +6,39 @@
 <div class="widget-top">
 	<div id="usual1" class="usual"> 
 	  <ul> 
-		<li><a class="selected" href="#tab1">Recent Comments</a></li> 
-		<li><a href="#tab2">Friends Connect</a></li>
+		<li><a  href="#tab1">Recent Comments</a></li> 
+		<li><a  class="selected" href="#tab2">Friends Connect</a></li>
 	  </ul> 
 	  <div class="tab" id="tab1">{% include 'recent_com.html' %}</div> 
 	  <div class="tab" id="tab2">
 			<!-- Include the Google Friend Connect javascript library. -->
-	<script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
-	
-	<!-- Define the div tag where the gadget will be inserted. -->
-	<div id="div-1230475411386" style="width:340px;border:1px solid #e0ecff;"></div>
-	<!-- Render the gadget into a div. -->
-	<script type="text/javascript">
-	var skin = {};
-	skin['HEIGHT'] = '250';
-	skin['BORDER_COLOR'] = '#e0ecff';
-	skin['ENDCAP_BG_COLOR'] = '#e0ecff';
-	skin['ENDCAP_TEXT_COLOR'] = '#333333';
-	skin['ENDCAP_LINK_COLOR'] = '#3465a4';
-	skin['ALTERNATE_BG_COLOR'] = '#ffffff';
-	skin['CONTENT_BG_COLOR'] = '#e0ecff';
-	skin['CONTENT_LINK_COLOR'] = '#3465a4';
-	skin['CONTENT_TEXT_COLOR'] = '#333333';
-	skin['CONTENT_SECONDARY_LINK_COLOR'] = '#7777cc';
-	skin['CONTENT_SECONDARY_TEXT_COLOR'] = '#666666';
-	skin['CONTENT_HEADLINE_COLOR'] = '#333333';
-	google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
-	google.friendconnect.container.renderMembersGadget(
-	 { id: 'div-1230475411386',
-	   site: '14084712429381725335'},
-	  skin);
-	</script>
+<script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
+
+<!-- Define the div tag where the gadget will be inserted. -->
+<div id="div-1230535017013" style="width:340px;border:1px solid #e0ecff;"></div>
+<!-- Render the gadget into a div. -->
+<script type="text/javascript">
+var skin = {};
+skin['HEIGHT'] = '250';
+skin['BORDER_COLOR'] = '#e0ecff';
+skin['ENDCAP_BG_COLOR'] = '#e0ecff';
+skin['ENDCAP_TEXT_COLOR'] = '#333333';
+skin['ENDCAP_LINK_COLOR'] = '#0000cc';
+skin['ALTERNATE_BG_COLOR'] = '#e0ecff';
+skin['CONTENT_BG_COLOR'] = '#e0ecff';
+skin['CONTENT_LINK_COLOR'] = '#0000cc';
+skin['CONTENT_TEXT_COLOR'] = '#333333';
+skin['CONTENT_SECONDARY_LINK_COLOR'] = '#7777cc';
+skin['CONTENT_SECONDARY_TEXT_COLOR'] = '#666666';
+skin['CONTENT_HEADLINE_COLOR'] = '#333333';
+google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
+google.friendconnect.container.renderMembersGadget(
+ { id: 'div-1230535017013',
+   site: '14084712429381725335'},
+  skin);
+</script>
+
+
 
 	  </div> 
 	</div> 
