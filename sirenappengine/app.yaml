@@ -27,6 +27,10 @@ handlers:
   static_files: static/player.html
   upload: static/player.html
   
+- url: /test.html
+  static_files: static/test.html
+  upload: static/test.html
+  
 - url: /icons
   static_dir: icons
 
