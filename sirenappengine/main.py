@@ -1,4 +1,4 @@
-import os,sys
+﻿import os,sys
 os.environ['DJANGO_SETTINGS_MODULE'] = 'jieblog.settings'
 
 # Google App Engine imports.

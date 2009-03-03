@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+﻿from django.http import HttpResponse, HttpResponseRedirect
 from jieblog.applications import models
 from jieblog.applications import bforms
 from funcs import render

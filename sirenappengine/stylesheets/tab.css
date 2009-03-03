@@ -1,7 +1,8 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 .usual {
   color:#000;
+  background-color: #fff;
 }
 .usual li { 
   list-style:none; 

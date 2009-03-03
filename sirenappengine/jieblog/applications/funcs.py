@@ -1,9 +1,13 @@
-from django.shortcuts import render_to_response
+﻿from django.shortcuts import render_to_response
 from google.appengine.api import memcache
 from google.appengine.ext import db
 from jieblog.applications import models
 import re
 import logging
+import sys
+
+def get_cat():
+	return ((thelist.slug,thelist.name) for thelist in models.Cat.all())
 
 def render(template, payload):
 	return render_to_response(template, payload)

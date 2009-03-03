@@ -1,10 +1,25 @@
-from django.http import HttpResponse, HttpResponseRedirect
+﻿from django.http import HttpResponse, HttpResponseRedirect
 from jieblog.applications import models
 from jieblog.applications import bforms
 from google.appengine.api import users
 from google.appengine.ext import db
 
 from funcs import render
+
+def PostCat(request):
+	user = users.get_current_user()
+	if users.is_current_user_admin():
+		if request.method == 'POST':
+			catform = bforms.CatForm(request.POST)
+			if catform .is_valid():
+				cat = catform .save()
+				return HttpResponseRedirect('/create')
+		else:
+			catform = bforms.CatForm()
+	else:
+		return  HttpResponseRedirect('/login')
+	payload = dict(catform = catform )
+	return render('cat-form.html', payload)
 
 def list_post(request,page=0):
 	user = users.get_current_user()
@@ -52,24 +67,25 @@ def create(request):
 	else:
 		return  HttpResponseRedirect('/login')
 	payload = dict(postform = postform)
-	return render('admin.html', payload)
+	return render('admini.html', payload)
 #	return render_to_response('create.html',{'postform':postform})
 
 def edit(request,post_id):
 	user = users.get_current_user()
 	if users.is_current_user_admin():
 		post = models.Post.get_by_id(int(post_id))
+		cat_data = models.Cat.get(post.cat.key()).key()
 		s = ",".join(["%s" %i for i in post.tags])
-		postform = bforms.EditForm(initial={'article':post.article,'draft':post.draft,'title':post.title,'content':post.content,'tags':s})
+		postform = bforms.EditForm(initial={'article':post.article,'draft':post.draft,'title':post.title,'content':post.content,'tags':s,'slug':post.slug,'cat':cat_data})
 		if request.method == 'POST':
 			postform = bforms.EditForm(request.POST)
 			if postform.is_valid():
 				postform.save(post)
-				return HttpResponseRedirect('/post/%s' %post_id)
+				return HttpResponseRedirect('/post/%s' %post.slug)
 	else:
 		return HttpResponseRedirect('/login')
 	payload = dict(postform=postform)
-	return render('admin.html', payload)
+	return render('admini.html', payload)
 	
 def login(request):
 	user = users.get_current_user()

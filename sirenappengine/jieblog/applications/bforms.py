@@ -1,10 +1,17 @@
-from django import newforms as forms
+﻿from django import newforms as forms
 from google.appengine.api import users
 import models
 from google.appengine.ext.db import djangoforms
-from funcs import split_tags
+from funcs import split_tags,get_cat
 
 
+
+class CatForm(forms.Form):
+	name = forms.CharField()
+	slug = forms.CharField()
+	def save(self):
+		cat = models.Cat(name=self.clean_data['name'],slug=self.clean_data['slug'])
+		cat.put()
 
 class ConfigForm(forms.Form):
 	name = forms.CharField()
@@ -20,13 +27,16 @@ class ConfigForm(forms.Form):
 		configdb.post_per_page=self.clean_data['post_per_page']
 		configdb.put()
 	
-class PostForm(forms.Form):
+class PostForm(forms.Form):	
 	title = forms.CharField()
 	content = forms.CharField(widget=forms.Textarea())
 	tags = forms.CharField()
 	article = forms.BooleanField(required=False)
-	draft = forms.BooleanField(required=False)
-	def save(self,currnet_user):		
+	draft = forms.BooleanField(required=False,label='Publish')
+	slug = forms.CharField()
+	cat = djangoforms.ModelChoiceField(models.Cat,required=True,query=models.Cat.all())
+
+	def save(self,currnet_user):
 		tags = split_tags(self.clean_data['tags'])
 		for tag in tags:
 			query = models.BlogTag.all().filter('name =',tag)
@@ -34,21 +44,28 @@ class PostForm(forms.Form):
 			if thetag==None:
 				blogtag = models.BlogTag(name=tag)
 				blogtag.put()
-		post = models.Post(article=self.clean_data['article'],tags = tags,title = self.clean_data['title'],content = self.clean_data['content'],author = currnet_user,draft = self.clean_data['draft'])
+		post = models.Post(cat=self.clean_data['cat'],slug=self.clean_data['slug'],article=self.clean_data['article'],tags = tags,title = self.clean_data['title'],content = self.clean_data['content'],author = currnet_user,draft = self.clean_data['draft'])
 		post.put()
+
 
 class EditForm(forms.Form):
 	title = forms.CharField()
 	content = forms.CharField(widget=forms.Textarea())
 	tags = forms.CharField()
 	article = forms.BooleanField(required=False)
-	draft = forms.BooleanField(required=False)
-	def save(self,post):		
+	draft = forms.BooleanField(required=False,label='Publish')
+	slug = forms.CharField()	
+	cat = djangoforms.ModelChoiceField(models.Cat,required=True,query=models.Cat.all())
+
+	
+	def save(self,post):
 		post.title = self.clean_data['title']
 		post.content = self.clean_data['content']
 		post.tags = split_tags(self.clean_data['tags'])
 		post.article = self.clean_data['article']
 		post.draft = self.clean_data['draft']
+		post.slug = self.clean_data['slug']
+		post.cat= self.clean_data['cat']
 		post.put()
 		
 			
@@ -93,21 +110,21 @@ class SiteLinkForm(forms.Form):
 		sitelink.put();
 		
 class FeatureLinkForm(forms.Form):
-	featurelinkform_title = forms.CharField()
-	featurelinkform_realized = forms.BooleanField(required=False)
-	featurelinkform_summary = forms.CharField(widget=forms.Textarea())
+	title = forms.CharField()
+	link = forms.URLField()
+	summary = forms.CharField(widget=forms.Textarea())
 	def save(self):
-		featurelink = models.FeatureLink(title=self.clean_data['featurelinkform_title'],realized=self.clean_data['featurelinkform_realized'],summary=self.clean_data['featurelinkform_summary'])
+		featurelink = models.FeatureLink(link=self.clean_data['link'],title=self.clean_data['title'],summary=self.clean_data['summary'])
 		featurelink.put();
 		
 class EditFeatureForm(forms.Form):
 	title = forms.CharField()
-	realized = forms.BooleanField(required=False)
+	link = forms.URLField()
 	summary = forms.CharField(widget=forms.Textarea())
 	def save(self,feature_item):		
 		feature_item.title = self.clean_data['title']
-		feature_item.realized = self.clean_data['realized']
 		feature_item.summary = self.clean_data['summary']
+		feature_item.link = self.clean_data['link']
 		feature_item.put()
 		
 class QuotationForm(forms.Form):

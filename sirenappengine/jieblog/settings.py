@@ -1,7 +1,7 @@
-# Django settings for pollango project.
+﻿# Django settings for pollango project.
 import os
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 # Local time zone for this installation. Choices can be found here:
@@ -35,6 +35,19 @@ MEDIA_URL = ''
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 
+#CACHE_BACKEND = "dummy:///"
+#CACHE_BACKEND = "memcached:///"
+
+#CACHE_MIDDLEWARE_SECONDS=60*2
+
+#INTERNAL_IPS = ('127,0.0.1', )
+#MIDDLEWARE_CLASSES = (
+
+#    'django.middleware.cache.CacheMiddleware',
+#    'django.middleware.common.CommonMiddleware',
+
+
+#)
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '#a1g)i%hz+f)44a0wea9ln!g+#=#tke!0@-k)gt=&m#ec-ir=&'
@@ -56,7 +69,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or
     # "C:/www/django/templates".  Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    ROOT_PATH + '/templates',
+    ROOT_PATH + '/jsimple',
     ROOT_PATH + '/administrator',
 )
 

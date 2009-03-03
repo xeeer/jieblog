@@ -1,4 +1,4 @@
-application: jieblog
+﻿application: jieblog
 version: 1
 runtime: python
 api_version: 1
@@ -23,9 +23,17 @@ handlers:
   static_files: static/canvas.html
   upload: static/canvas.html
   
-- url: /player.html
+- url: /player
   static_files: static/player.html
   upload: static/player.html
+
+- url: /xnplayer.xml
+  static_files: static/xnplayer.xml
+  upload: static/xnplayer.xml
+  
+- url: /xnplayer.html
+  static_files: static/xnplayer.html
+  upload: static/xnplayer.html
   
 - url: /test.html
   static_files: static/test.html
@@ -42,9 +50,6 @@ handlers:
 
 - url: /scripts
   static_dir: scripts
-
-- url: /rich_text_editor
-  static_dir: rich_text_editor
 
 - url: /.*
   script: main.py

@@ -1,10 +1,13 @@
-from django.conf.urls.defaults import *
+﻿from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
     (r'^$', 'jieblog.applications.views.index'),
-    (r'^post/(?P<post_id>[^\.^/]+)/$', 'jieblog.applications.views.comment'),
+    (r'^post/(?P<post_slug>[^\.^/]+)/$', 'jieblog.applications.views.comment'),
     (r'^page/(?P<page>[^\.^/]+)/$', 'jieblog.applications.views.index'),
     (r'^post/$', 'jieblog.applications.views.index'),
+    (r'^catagory/(?P<cat_slug>[^\.^/]+)/(?P<page>[^\.^/]+)/$', 'jieblog.applications.views.catagory'),
+#archive view  
+    (r'^archive/(?P<post_year>[^\.^/]+)/(?P<post_month>[^\.^/]+)/$', 'jieblog.applications.views.archive'),
 
 #File Manager
     (r'^uploader/$', 'jieblog.applications.views.uploader'),
@@ -21,10 +24,10 @@ urlpatterns = patterns('',
     (r'^edit/(?P<post_id>[^\.^/]+)/$', 'jieblog.applications.background.edit'),
     (r'^editfeature/(?P<feature_list_id>[^\.^/]+)/$', 'jieblog.applications.views.edit_feature'),
     (r'^editquotation/(?P<quotation_id>[^\.^/]+)/$', 'jieblog.applications.views.edit_quotation'),
-    (r'^tag/(?P<post_tag>[^\.^/]+)/$', 'jieblog.applications.views.view_tag'),
+    (r'^tag/(?P<post_tag>[^\.^/]+)/$', 'jieblog.applications.views.tags'),
 
 #sitemap and feed
-    (r'^feeds/$', 'jieblog.applications.views.feeds'),
+    (r'^feeds/$', 'jieblog.applications.views.sitemap'),
     (r'^sitemap/$', 'jieblog.applications.views.sitemap'),
 
 # XML-RPC
@@ -37,6 +40,7 @@ urlpatterns = patterns('',
     (r'^list/(?P<page>[^\.^/]+)/$', 'jieblog.applications.background.list_post'),
     (r'^remove/(?P<post_id>[^\.^/]+)/$', 'jieblog.applications.background.delete_post'),
     (r'^create/$', 'jieblog.applications.background.create'),
+    (r'^cat/$', 'jieblog.applications.background.PostCat'),
 #test content
 )
 

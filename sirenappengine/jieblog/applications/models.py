@@ -1,4 +1,5 @@
-from google.appengine.ext import db
+﻿from google.appengine.ext import db
+import datetime
 import hashlib,urllib
 
 class ConfigDB(db.Model):
@@ -29,7 +30,6 @@ class SiteLink(db.Model):
 class FeatureLink(db.Model):
 	title = db.StringProperty()
 	link = db.LinkProperty()
-	realized = db.BooleanProperty()
 	summary = db.TextProperty()
 	post_on = db.DateTimeProperty(auto_now_add=True)
 	
@@ -46,6 +46,14 @@ class Quotation(db.Model):
 	
 	def get_quotation_url (self):
 		return '%s' %self.key().id()
+		
+class Cat(db.Model):
+	name = db.StringProperty()
+	slug = db.StringProperty()
+	
+	def __str__(self):
+		return self.name
+
 
 class Post(db.Model):
 	title = db.StringProperty(required=True)
@@ -56,14 +64,16 @@ class Post(db.Model):
 	comments_count = db.IntegerProperty(0)
 	article = db.BooleanProperty()
 	draft = db.BooleanProperty(default=False)
-
+	slug =  db.StringProperty(multiline=False)
+	cat = db.ReferenceProperty(Cat)
+	
 	
 	def __str__ (self):
 		return '%s' %self.title
 		
-	def get_absolute_url (self):
+	def get_absolute_url(self):
 		return '%s' %self.key().id()
-		
+	
 	def get_comments_count(self):
 		return Comments.all().filter("post",self).count()
 
@@ -92,4 +102,3 @@ class FileUpload(db.Model):
 	content = db.BlobProperty()
 	size = db.IntegerProperty()
 	date_added = db.DateProperty(auto_now_add=True)
-

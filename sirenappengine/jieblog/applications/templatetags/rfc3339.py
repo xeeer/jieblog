@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 '''
 The function `rfc3339` formats dates according to the :RFC:`3339`. `rfc3339`
 tries to have as much as possible sensible defaults.
