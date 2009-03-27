@@ -1,0 +1,102 @@
+body {
+		margin:0;
+		font-size: 12px;
+		font-family: "Lucida Grande", Tahoma, Verdana, arial, sans-serif, hei;
+}
+a:link { text-decoration: none; color : #0083e3; border: 0px;}
+a:active { text-decoration: underline; color : #0083e3; border: 0px;}
+a:visited { text-decoration: none; color : #0083e3; border: 0px;}
+a:hover	{ text-decoration: underline; color : #0099cc; border: 0px;}
+h4 { margin:0;padding:0;}
+#container {
+	width: 100%;
+	margin:0;
+	padding:0;
+}
+#bottom {
+	margin-top:40px;
+	padding:0;
+	text-align: center;
+	clear:both;
+	color: #666;
+}
+#main {
+	margin-left: 200px;
+	padding: 10px;
+	background-color:#c5d7ef;
+	min-height:500px;
+}
+#side {
+	margin:0;
+	padding-left:10px;
+	width:190px;
+	float: left;
+}
+#side ul{
+	margin:0;
+	padding:0;
+}
+#side li {
+	line-height: 20px;
+	font-size: 11px;
+	padding-left:20px;
+	list-style: none;
+}
+
+#side li a {
+	font-weight: bold;
+}
+.current-page {
+	background-color: #c5d7ef;
+}
+.current-page li a:hover {
+	font-weight: bold;
+}
+.not-current a {
+	color: #ccc;
+}
+#main-form label {
+	width: 60px;
+	float: left;
+	color: #999;
+	font-weight: bold;
+}
+#main-form li {
+	line-height: 24px;
+	list-style: none;
+}
+#id_title,#id_tags,#id_slug,#id_cat,#id_subtitle {
+	width: 300px;
+	border: 1px solid #999;
+	font-size:12px;
+}
+#id_content {
+	width: 560px;
+	min-height: 300px;
+	border: 1px solid #999;
+}
+#id_title:focus,#id_tags:focus,#id_slug:focus,#id_cat:focus,#id_content:focus,#id_subtitle:focus {
+	border: 2px solid #0083e3;
+}
+
+#submit {
+	margin-left:60px;
+}
+
+#postlist { margin: 1em 0.5em; 
+			font-size:11px;
+			font-family: 'Trebuchet MS',Tahoma,Verdana,'Microsoft YaHei';
+}
+#postlist th { background-color: #0083e3; }
+#postlist th, #postlist td { padding: 2px; }
+.even { background-color: #fffbe8; }
+.odd { background-color: #e9e9e9; }
+#postlist a {
+  text-decoration:none;
+}
+#postlist a:hover {
+  text-decoration:underline;
+}
+#postlist th,td {
+	border: 1px solid #000;
+}

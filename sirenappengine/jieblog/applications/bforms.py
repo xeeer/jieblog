@@ -4,7 +4,12 @@ import models
 from google.appengine.ext.db import djangoforms
 from funcs import split_tags,get_cat
 
-
+class SiteForm(forms.Form):
+	title = forms.CharField(initial='jieblog')
+	subtitle = forms.CharField(initial='just another blog')
+	def save(self):
+		site = models.Site(site_title=self.clean_data['title'],sub_title=self.clean_data['subtitle'])
+		site.put()
 
 class CatForm(forms.Form):
 	name = forms.CharField()
@@ -27,14 +32,14 @@ class ConfigForm(forms.Form):
 		configdb.post_per_page=self.clean_data['post_per_page']
 		configdb.put()
 	
-class PostForm(forms.Form):	
-	title = forms.CharField()
-	content = forms.CharField(widget=forms.Textarea())
-	tags = forms.CharField()
+class PostForm(forms.Form):
 	article = forms.BooleanField(required=False)
 	draft = forms.BooleanField(required=False,label='Publish')
+	title = forms.CharField()
 	slug = forms.CharField()
 	cat = djangoforms.ModelChoiceField(models.Cat,required=True,query=models.Cat.all())
+	tags = forms.CharField()
+	content = forms.CharField(widget=forms.Textarea())
 
 	def save(self,currnet_user):
 		tags = split_tags(self.clean_data['tags'])
@@ -49,15 +54,13 @@ class PostForm(forms.Form):
 
 
 class EditForm(forms.Form):
-	title = forms.CharField()
-	content = forms.CharField(widget=forms.Textarea())
-	tags = forms.CharField()
 	article = forms.BooleanField(required=False)
 	draft = forms.BooleanField(required=False,label='Publish')
-	slug = forms.CharField()	
+	title = forms.CharField()
+	slug = forms.CharField()
 	cat = djangoforms.ModelChoiceField(models.Cat,required=True,query=models.Cat.all())
-
-	
+	tags = forms.CharField()
+	content = forms.CharField(widget=forms.Textarea())
 	def save(self,post):
 		post.title = self.clean_data['title']
 		post.content = self.clean_data['content']

@@ -1,0 +1,15 @@
+			{% load filter %}
+			<div class="comment">				
+					<div class="comment-meta">
+						<div class="author-icon"><img alt="icon" align="left" src="{{ comment.get_gravatar_url }}" /></div>
+
+						<div class="comment-content">
+						{{comment.comments_content}}
+							<div class="comment-info">Comment By <a href="{{ comment.comments_author_link }}">{{comment.comments_author|jieblognickname}}</a>
+							{{comment.comments_post_on|timezone:8|date:"Y-m-d H:i:s"}}
+							</div>
+						</div>
+
+					</div>
+
+			</div>

@@ -41,6 +41,12 @@ urlpatterns = patterns('',
     (r'^remove/(?P<post_id>[^\.^/]+)/$', 'jieblog.applications.background.delete_post'),
     (r'^create/$', 'jieblog.applications.background.create'),
     (r'^cat/$', 'jieblog.applications.background.PostCat'),
+    
+#new admin interface
+    (r'^admin/create/$', 'jieblog.applications.background.create'),
+    (r'^admin/config/$', 'jieblog.applications.background.Config'),
+    (r'^admin/manage/$', 'jieblog.applications.background.list_post'),
+    (r'^admin/edit/(?P<post_id>[^\.^/]+)/$', 'jieblog.applications.background.edit'),
 #test content
 )
 

@@ -1,0 +1,57 @@
+{% extends 'AdminBase.html' %}
+{% load filter %}
+{% block contents %}
+<div id="side">
+	<div id="header">
+		<h1 id="blog-title"><a href="/">jieblog</a></h1>
+		<h5 id="subheading">Everything happens for a reason</h5>
+	</div>
+	<div class="widget" id="navigate">
+		<h3>Navigate</h3>
+		<ul id='menu'>
+			<li class="not-current"><a href='/admin/create' title='Create Post'>Create Post</a></li>
+			<li class="not-current"><a href='/admin/config' title='Site Config'>Site Config</a></li>
+			<li class="current-page"><a href='/admin/manage' title='Post Manage'>Post Manage</a></li>
+		</ul>
+	</div>
+</div>
+<div id="main">
+	<table id="postlist">
+	  <tr>
+		<th>No.</th>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Date</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	  </tr>
+	  {% for post in posts %}
+		<tr class="{% cycle odd,even %}">
+		  <td>{{ forloop.counter }}</td>
+		  <td>{{ post.key.id }}</td>
+		  <td>{{ post.title }}</td>
+		  <td>{{ post.author }}</td>
+		  <td>{{ post.post_on|timezone:8|date:"Y-m-d H:i:s"}}</td>
+		  <td><a href="/admin/edit/{{post.key.id}}">Edit</a></td>
+		  <td><a href="/admin/remove/{{post.key.id}}">Delete</a></td>
+		</tr>
+	  {% endfor %}
+	  {% if show_page_panel %}
+	  <tr>
+		<td>
+		{% if show_prev %}
+		<a href="/list/{{ prev }}">PREV</a>
+		{% endif %}
+		{% if show_prev or show_next %}
+		{{  current_page }}
+		{% endif %}
+		{% if show_next %}
+		<a href="/list/{{ next }}">NEXT</a>
+		{% endif %}
+		</td>
+	  </tr>
+	  {% endif %}
+	</table>
+</div>
+{% endblock%}

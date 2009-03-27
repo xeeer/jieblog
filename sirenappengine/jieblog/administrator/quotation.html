@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+	<head>
+		<title>Wow Quatation</title>
+		<script src="http://www.wowdb.com/js/extooltips.js"></script>
+	</head>
+
+	<body>		
+		{% load filter %}
+		<ul>
+		{% for quotation in quotations %}
+			<li>{{quotation.content}}————[<a {% ifequal quotation.tclass 'r1' %}style='background-color:#000'{% endifequal %} class='{{quotation.tclass}}' href='{{quotation.link}}'>{{quotation.author}}</a>][{{quotation.post_on|timezone:8|date:"Y-m-d H:i:s"}}]{% if quotation.wow %}[from worldofwarcraft]{% else %}[from others]{% endif%}{% if show_edit %}<a href="../../editquotation/{{quotation.get_quotation_url}}">edit</a>{% endif %}</li>
+		{% endfor %}
+		</ul>
+		
+		<div>
+		{% if show_edit %}
+		<form action="." method="post">
+			{{quotationform.as_p}}
+			<input type="submit" name="createquotation" value="Quotation" />
+			<input type="reset" name="reset" value="Reset" />
+		</form>
+		{% endif %}
+	</div>
+	</body>
+</html>
+

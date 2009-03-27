@@ -1,0 +1,19 @@
+{% extends 'AdminBase.html' %}
+{% block contents %}
+<div id="side">
+	<div id="header">
+		<h1 id="blog-title"><a href="/">jieblog</a></h1>
+	</div>
+	<div class="widget" id="navigate">
+		<h3>Navigate</h3>
+		<ul id='menu'>
+			<li class="current-page "><a href='/admin/create' title='Create Post'>Create Post</a></li>
+			<li class="not-current"><a href='/admin/config' title='Site Config'>Site Config</a></li>
+			<li class="not-current"><a href='/admin/manage' title='Post Manage'>Post Manage</a></li>
+		</ul>
+	</div>
+</div>
+<div id="main">
+	{% include 'AdminPost.html'%}
+</div>
+{% endblock%}

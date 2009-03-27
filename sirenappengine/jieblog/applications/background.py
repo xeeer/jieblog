@@ -3,8 +3,23 @@ from jieblog.applications import models
 from jieblog.applications import bforms
 from google.appengine.api import users
 from google.appengine.ext import db
-
 from funcs import render
+
+def Config(request):
+	user = users.get_current_user()
+	if users.is_current_user_admin():
+		if request.method == 'POST':
+			siteform = bforms.SiteForm(request.POST)
+			if siteform.is_valid():
+				site = siteform.save()
+				return HttpResponseRedirect('/admin/create')
+		else:
+			siteform = bforms.SiteForm()
+		sites = models.Site.all()
+	else:
+		return  HttpResponseRedirect('/login')
+	payload = dict(siteform = siteform, sites = sites)
+	return render('AdminConfig.html', payload)
 
 def PostCat(request):
 	user = users.get_current_user()
@@ -41,7 +56,7 @@ def list_post(request,page=0):
 		show_next = False
 	current_page = page + 1
 	payload = dict(posts=posts,show_prev=show_prev,show_next = show_next,show_page_panel = show_prev or show_next,prev = page - 1,next = page + 1,current_page = current_page)
-	return render('post_list.html',payload)
+	return render('AdminManage.html',payload)
 
 
 def delete_post(request,post_id):
@@ -67,7 +82,7 @@ def create(request):
 	else:
 		return  HttpResponseRedirect('/login')
 	payload = dict(postform = postform)
-	return render('admini.html', payload)
+	return render('AdminDashboard.html', payload)
 #	return render_to_response('create.html',{'postform':postform})
 
 def edit(request,post_id):
@@ -85,7 +100,7 @@ def edit(request,post_id):
 	else:
 		return HttpResponseRedirect('/login')
 	payload = dict(postform=postform)
-	return render('admini.html', payload)
+	return render('AdminDashboard.html', payload)
 	
 def login(request):
 	user = users.get_current_user()
@@ -98,4 +113,3 @@ def login(request):
 	payload = dict(greeting=greeting)
 	return render('admin-login.html',payload)
 
-	

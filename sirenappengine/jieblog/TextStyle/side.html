@@ -1,0 +1,96 @@
+<div id="header">
+	<h1 id="blog-title"><a href="/">jieblog</a></h1>
+	<h5 id="subheading">Everything happens for a reason</h5>
+</div>
+
+<div class="widget" id="navigate">
+	<div class="widget-title" >
+		<h3>Navigate</h3>
+	</div>
+	<div class="widget-content">
+		<ul id='menu'>
+			<li class="current-page "><a href='/' title='Home'>Home</a></li>
+			<li class="not-current-page">{{greeting}}</li>
+			<li class="not-current-page"><a href='http://feeds.feedburner.com/sirenengine' title='RSS'>RSS</a></li>			
+		</ul>
+	</div>
+</div>
+
+<div class="widget">
+	<div class="widget-title">
+		<h3>Catagory</h3>
+	</div>
+	<div class="widget-content">
+		<ul>
+			{% for cat in cats %}
+				<li><a href='/catagory/{{cat.slug}}/1'>{{cat.name}}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+
+<div class="widget">
+	<div class="widget-title">
+		<h3>Archive</h3>
+	</div>
+	<div class="widget-content">
+		<ul>
+			<li><a href='/archive/2009/1/'>2009-01</a></li>
+			<li><a href='/archive/2008/12/'>2008-12</a></li>
+			<li><a href='/archive/2008/11/'>2008-11</a></li>
+			<li><a href='/archive/2008/10/'>2008-10</a></li>
+			<li><a href='/archive/2008/9/'>2008-09</a></li>
+			<li><a href='/archive/2008/8/'>2008-08</a></li>					
+		</ul>
+	</div>
+</div>
+
+
+<div class="widget">
+	<div class="widget-title" >
+		<h3>Site Link</h3>
+	</div>
+	<div class="widget-content">
+		<ul>
+			{% for link in sitelink %}
+			<li><a href='{{link.link}}'>{{link.title}}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+
+<div class="widget">
+	<div class="widget-title">
+		<h3>Project List</h3>
+	</div>
+	<div class="widget-content">
+		<ul>
+			{% for link in featurelink %}
+			<li><a href="{{link.link}}" title="{{link.summary}}">{{link.title}}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+
+<div class="widget">
+	<div class="widget-title"><h3>Tags Cloud</h3></div>
+	<div class="widget-content">
+		{% for tag in tag_cloud %}
+			<span class="tag-link"><a href="../../tag/{{tag}}">{{tag.name}}</a></span>
+		{% endfor %}
+	</div>
+</div>
+
+<div class="widget">
+	<div class="widget-title">
+		<h3>Power By</h3>
+	</div>
+	<div class="widget-content">
+		<div id="gae-icon">
+			<img src="/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
+		</div>
+		<div id="django-icon">
+			<img src="/images/djangoproject120x25.gif" alt="Made with Django." title="Made with Django." />
+		</div>
+	</div>
+</div>

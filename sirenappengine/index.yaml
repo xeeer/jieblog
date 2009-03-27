@@ -10,7 +10,7 @@
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-# Used 580 times in query history.
+# Unused in query history -- copied from input.
 - kind: Comments
   properties:
   - name: comments_post_on
@@ -27,7 +27,7 @@
   - name: post_on
     direction: desc
 
-# Used 950 times in query history.
+# Unused in query history -- copied from input.
 - kind: Post
   properties:
   - name: article
@@ -35,20 +35,20 @@
   - name: post_on
     direction: desc
 
-# Used 4 times in query history.
+# Unused in query history -- copied from input.
 - kind: Post
   properties:
   - name: cat
   - name: post_on
     direction: desc
 
-# Used 3 times in query history.
+# Unused in query history -- copied from input.
 - kind: Post
   properties:
   - name: date
     direction: desc
 
-# Used 1579 times in query history.
+# Unused in query history -- copied from input.
 - kind: Post
   properties:
   - name: draft
@@ -70,20 +70,20 @@
   - name: get_post_year
   - name: post_on
 
-# Used 2 times in query history.
+# Unused in query history -- copied from input.
 - kind: Post
   properties:
   - name: post_month
   - name: post_year
   - name: post_on
 
-# Used 36 times in query history.
+# Unused in query history -- copied from input.
 - kind: Post
   properties:
   - name: post_on
     direction: desc
 
-# Used 3 times in query history.
+# Unused in query history -- copied from input.
 - kind: Post
   properties:
   - name: post_on.year=

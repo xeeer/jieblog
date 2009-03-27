@@ -1,0 +1,426 @@
+/*
+	Jsimple theme Base layout
+*/
+
+body {
+		margin:0;
+		padding:  20px 0 20px 0;
+/*		background-color:#4d5061;    */
+		font-size: 12px;
+		font-family: "Lucida Grande", Tahoma, Verdana, arial, sans-serif, hei;		
+		background-color: #000;
+}
+
+#container {
+	width: 100%;
+	margin:0;
+	padding:0;
+}
+
+#header {
+	margin:0 auto;
+	padding:0;
+	background-color:#000;
+	height:100px;
+	width: 960px;
+	background-image: url(/images/header.jpg);
+}
+
+#main {
+	width: 960px;
+	margin-left:auto;
+	margin-right: auto;
+	background-color: #fff;
+}
+	
+#bottom-bar {
+	margin:0;
+	padding:0;
+	height: 100px;
+	background-color:#4d5061;
+	width: 100%;
+	clear:both;
+}
+
+#main-bar {
+	width: 600px;
+	margin:0;
+}
+
+#sider-bar {
+	width: 350px;
+	background-color:  #b5edbc;
+	float: right;
+	margin:0;
+	padding:0;
+}
+
+#nav {
+	height: 20px;
+}
+
+
+pre.prettyprint{ 
+	padding:5px;
+	border-left:3px solid #7755aa;
+	margin: 10px;
+	font-family:  Consolas, "Courier New", "Lucida Grande", Tahoma, Verdana;
+}
+
+/*
+	Jsimple theme link style
+*/
+
+a:link { text-decoration: none; color : #0083e3; border: 0px;}
+a:active { text-decoration: underline; color : #0083e3; border: 0px;}
+a:visited { text-decoration: none; color : #0083e3; border: 0px;}
+a:hover	{ text-decoration: underline; color : #0099cc; border: 0px;}
+
+/*
+	Jsimple theme head line style
+*/
+
+h1 {
+	margin:0;
+	padding:0;
+	font-size: 20px;
+}
+h2 {
+	margin:0;
+	padding:0;
+	font-size: 18px;
+}
+h3 {
+	margin:0;
+	padding:0;
+	font-size: 13px;;
+}
+h4 {
+	margin:0;
+	padding:0;
+	font-size: 10px;
+}
+h5 {
+	margin:0;
+	padding:0;
+	font-size: 9px;
+}
+
+/*
+	Jsimple header style
+*/
+
+#blog-title {
+	text-align: center;
+	padding-top: 20px;
+}
+
+#blog-title a {
+	color: #fff;
+}
+
+#blog-title a:hover {
+	color: #f57900;
+}
+#subheading {
+	color: #999;
+	text-align: center;
+}
+
+/*
+ navigate style
+*/
+
+#menu {
+	margin:0;
+	padding:0;
+}
+
+#menu a {
+	display:block;
+	height: 20px;
+	font-size: 10px;
+	padding: 0px 5px 0px 5px;
+	font-weight: bold;
+	line-height:20px;
+	background: #DDD url(/images/menu_bg.png) repeat-x;
+	color: #999;
+	
+}
+
+#menu a:hover{
+	text-decoration:none;
+	color: #f57900;
+	background-color: #babdb6;
+}
+
+#menu li {
+	float: left;
+	list-style: none;	
+	height: 20px;
+	border-left: 1px solid white;
+	border-right: 1px solid #E4E1DA;
+	border-bottom: 1px solid #E4E1DA;
+}
+
+/*
+	main-bar style
+*/
+
+.post {
+	margin-bottom: 60px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+
+.post-content {
+	font-size: 12px;
+	line-height: 20px;
+	margin-top: 5px;
+	letter-spacing: 0.5px;
+}
+
+.post-info {
+	font-size: 10px;
+	padding-bottom: 0px;
+	margin-top:5px;
+	color: #666;	
+}
+
+.post-content p {
+	margin-top: 10px;
+}
+
+.post-tags a{
+	font-size: 10px;
+}
+
+.post-title a {
+	color: #04b6df;
+}
+
+.post-title a:hover {
+	color: #f57900;
+}
+
+.post-time {
+	background: url(/icons/25.png) no-repeat;
+	padding: 1px 0px 2px 18px;
+}
+
+.post-author {
+	background: url(/icons/37.png) no-repeat;
+	padding: 1px 0px 2px 18px;
+}
+
+.post-comments-count{
+	background: url(/icons/47.png) no-repeat;
+	padding: 1px 0px 2px 18px;
+}
+
+.post-tags-main {
+	background: url(/icons/39.png) no-repeat;
+	padding: 1px 0px 2px 18px;
+}
+
+.post-edit{
+	background: url(/icons/71.png) no-repeat;
+	padding: 1px 0px 2px 18px;
+}
+
+
+/*
+ widget style
+*/
+
+.widget {
+	margin-bottom: 10px;
+}
+
+.widget ul {
+	margin:0px;
+	padding:0px;
+}
+
+.widget li {
+	list-style: none;
+	line-height: 20px;
+}
+
+.widget li > a {
+	display: block;
+	text-indent: 10px;
+	color: #000;
+}
+
+.widget li >a:hover {
+	background-color: #3465a4;
+	color: #fff;
+	font-weight: bold;
+}
+
+.widget-content {
+	font-size: 11px;
+	background-color: #fff;
+	padding: 5px;
+}
+
+.widget-content > span > a {	color: #000; }
+
+.widget-title {
+	text-align: left;
+	font-weight: bold;
+	color: #fff;
+	padding: 2px 5px 2px 5px;
+	cursor: pointer;
+	background-color: #729fcf;
+}
+
+#sider-bar-main {	padding: 10px 10px 0px 10px; }
+
+#sider-bar-main-right {
+	float: right;
+	width: 160px;
+}
+
+#sider-bar-main-left {	width: 160px; }
+
+#tags-cloud {	text-align: center; }
+
+#power-by {	text-align: center; }
+
+.tag-link {
+	line-height:18px;
+	padding:1px 2px 1px 2px;
+	text-decoration: none;
+	font-size: 10px;
+}
+
+.tag-link > a:hover{	color: #ef2929; }
+/*
+ bottom style
+*/
+
+#copyright {
+	color: #999;
+	text-align: center;
+	padding-top: 50px;
+}
+
+/*
+	sider-bar-top stytle
+*/
+
+#widget-wide {	padding: 10px 10px 0px 10px; }
+
+.comment {	margin-bottom: 5px; }
+
+.author-icon {
+	width: 32px;
+	height: 32px;
+	padding: 1px;
+	border: 1px solid #666;
+	background-color: #fff;
+	float: left;
+}
+
+.comment-info {
+	font-size: 10px;
+	color: #999;
+	text-align: right;
+}
+
+.comment-content {
+	padding: 5px;
+	margin-left: 40px;
+	background-color: #e0ecff;
+	font-size: 11px;
+}
+
+/*
+	Comment Form Style
+*/
+
+#comment-bar,#comment-bar-form {
+	margin-left:50px;
+	margin-right:50px;
+}
+#comment-bar-form > .widget {
+	padding: 5px;
+}
+#comment-bar > .widget-wide {
+	padding: 5px;
+}
+
+#comments-form {
+	text-align: left;
+}
+
+#comments-form label {
+	width: 95%;
+	font-weight: bold;
+	color: #AAA;
+}
+
+#id_comments_content {
+	width: 470px;
+	background-color: #000;
+	font-size: 12px;
+
+}
+
+#id_comments_author { 
+	width: 95%;
+	border: 1px solid #DDD;	
+	font-size: 12px;
+	color: #999;
+}
+
+#id_comments_author_url {
+	width: 95%;
+	border: 1px solid #DDD;
+	font-size: 12px;
+	color: #999;
+}
+
+#widget-comment-form {
+	background-color: #4e9a06;
+	color: #fff;
+}
+
+#paginate {
+	text-align: center;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+
+/*
+	code,blockquote,img and other html elements style
+*/
+
+pre.prettyprint{
+	line-height: 14px;
+	border-left: 3px solid #7755aa;
+	background-color: #eeeeff;
+	overflow: auto;
+	word-wrap : break-word;
+	word-break : normal;
+}
+
+blockquote {
+	font-size: 11px;
+	border-left: 3px solid #58bf2f;
+	background-color: #eeffee;
+	padding: 5px;
+	margin: 10px;
+	font-family: "Lucida Grande", Georgia, Tahoma, Verdana, arial, sans-serif, hei;
+}
+
+.img-frame {
+	padding: 1px;
+	border: 1px solid #888a85;
+	background-color: #fff;
+}

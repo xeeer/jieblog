@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}
+{% load filter %}
+	<title>{{post.title}} - JIEblog</title>
+	<meta name="Keywords" content="{% for tag in post.tags %}{{tag}},{% endfor %}" />
+	<meta name="description" content='{{post.content|striptags|gendes:100}}' />
+	<style type="text/css" media="screen">
+		#nicEdit-selected {
+			background-color: #fff;
+			border: 1px solid;
+			display: block;
+		}
+
+	</style>
+
+{% endblock %}
+
+{% block contents %}
+
+	<div id="sider-bar">
+		{% include 'sider-bar.html'%}
+	</div>
+	
+	<div id="main-bar">
+
+		<div id="nav">
+
+			<ul id='menu'>
+				<li class="current-page "><a href='/' title='Home'>Home</a></li>
+				<li class="not-current-page">{{greeting}}</li>
+				{% if articles %}
+				{% for article in articles %}
+				<li class="not-current-page"><a href='/post/{{article.slug}}'>{{article.title}}</a></li>
+				{% endfor %}
+				{% endif%}			
+				<li class="not-current-page"><a href='http://feeds.feedburner.com/sirenengine' title='RSS'>RSS</a></li>			
+			</ul>
+
+		</div>
+		{% include 'post.html' %}
+		
+		
+		<script type="text/javascript" src="/scripts/nicEdit.js"></script>
+		<script type="text/javascript">
+		bkLib.onDomLoaded(function() {
+			new nicEditor({
+							iconsPath : '/images/nicEditorIcons.gif',
+							buttonList : ['bold','italic','underline','subscript','superscript','link','unlink','forecolor','removeformat']
+	
+							}).panelInstance('id_comments_content');
+		});
+		</script>
+		<div id="comment-bar">		
+		
+			<div class="widget-wide">		
+			{% for comment in comments %}
+				{% include 'comment-line.html'%}
+			{% endfor %}
+			</div>
+		</div>
+		
+		<div id="comment-bar-form">
+	
+			<div class="widget">
+				<div id="comments-form">
+	
+					<div class="widget-title" id="widget-comment-form">Comment</div>
+	
+					<div class="widget-content">	
+						<form action="." method="post">
+							{{commentform.as_ul}}
+							<input type="submit" name="commentpost" value="Submit" />
+						</form>	
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+{% endblock %}

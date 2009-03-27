@@ -1,0 +1,43 @@
+{% for post in posts %}
+			{% include 'post.html' %}
+{% endfor %}
+
+<div id="paginate">
+	{% ifequal blog_view 'page' %}
+
+		{% if show_prev %}
+			<span id="prev" class="paginate-button"><a href="/{{blog_view}}/{{ prev }}">PREV</a></span>
+		{% endif %}
+
+		{% for i in pages %}
+			{% ifequal i page %}
+				{{ i }}
+			{% else %}
+				<a href="/{{blog_view}}/{{ i }}">{{ i }}</a>
+			{% endifequal %}
+		{% endfor %}
+
+		{% if show_next %}
+			<span id="next" class="paginate-button"><a href="/{{blog_view}}/{{ next }}">NEXT</a></span>
+		{% endif %}
+		
+	{% else %}
+
+		{% if show_prev %}
+			<span id="prev" class="paginate-button"><a href="/{{blog_view}}/{{blog_slug}}/{{ prev }}">PREV</a></span>
+		{% endif %}
+		
+		{% for i in pages %}
+			{% ifequal i page %}
+				{{ i }}
+			{% else %}
+				<a href="/{{blog_view}}/{{blog_slug}}/{{ i }}">{{ i }}</a>
+			{% endifequal %}
+		{% endfor %}
+		
+		{% if show_next %}
+			<span id="next" class="paginate-button"><a href="/{{blog_view}}/{{blog_slug}}/{{ next }}">NEXT</a></span>
+		{% endif %}
+
+	{% endifequal  %}
+</div>

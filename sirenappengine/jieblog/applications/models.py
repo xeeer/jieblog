@@ -10,6 +10,10 @@ class ConfigDB(db.Model):
 	def get_config_url (self):
 		return '%s' %self.key().id()
 
+class Site(db.Model):
+	site_title = db.StringProperty()
+	sub_title = db.StringProperty()
+
 class BlogTag(db.Model):
 	name = db.StringProperty()
 	def __str__ (self):
@@ -90,7 +94,7 @@ class Comments(db.Model):
 	def get_gravatar_url(self):
 		gravatar_image = "http://www.gravatar.com/avatar.php?"
 		enmail = str(self.comments_author.email())
-		default = "http://blzinsider.cn/icons/unknow.jpeg"
+		default = "http://jieblog.appspot.com/icons/unknow.jpeg"
 		size = 32
 		gravatar_image += urllib.urlencode({'gravatar_id':hashlib.md5(enmail).hexdigest(),'default':default,'size':str(size)})
 		return gravatar_image

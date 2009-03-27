@@ -1,0 +1,129 @@
+<div id="sider-bar-top">
+
+<div id="usual1" class="usual"> 
+	  <ul> 
+		<li><a  class="selected" href="#tab1">Recent Comments</a></li> 
+		<li><a  href="#tab2">Friends Connect</a></li>
+	  </ul> 
+	  <div class="tab" id="tab1">{% load filter %}
+
+	{% for comment in recent_comments %}
+		{% include 'comment-line.html'%}
+	{% endfor %}</div> 
+	  <div class="tab" id="tab2">
+	  </div> 
+	</div> 
+	
+</div>
+
+<script type="text/javascript"> 
+  $("#usual1 ul").idTabs(); 
+</script>
+
+<div id="sider-bar-main">
+
+	<div id="sider-bar-main-right">
+	
+		<div class="widget">
+		
+			<div class="widget-title" id="widget-site-link"><h3>Site Link</h3></div>
+			
+			<div class="widget-content" id="site-link">
+			
+				<ul>
+					{% for link in sitelink %}
+					<li><a href='{{link.link}}'>{{link.title}}</a></li>
+					{% endfor %}
+				</ul>
+				
+			</div>
+			
+		</div>
+		
+		<div class="widget">
+
+			<div class="widget-title" id="widget-favorite-list"><h3>Project List</h3></div>
+
+			<div class="widget-content" id="feature-link">
+			
+				<ul>
+					{% for link in featurelink %}
+					<li><a href="{{link.link}}" title="{{link.summary}}">{{link.title}}</a></li>
+					{% endfor %}
+				</ul>
+				
+			</div>
+			
+		</div>
+		
+		<div class="widget">
+		
+			<div class="widget-title" id="widget-power-by"><h3>Power By</h3></div>
+			
+			<div class="widget-content" id="power-by">
+			
+				<div id="gae-icon">
+					<img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
+				</div>
+				
+				<div id="django-icon">
+					<img src="http://media.djangoproject.com/img/badges/djangoproject120x25.gif" alt="Made with Django." title="Made with Django." />
+				</div>
+				
+			</div>
+			
+		</div>
+			
+	</div>
+	
+
+
+	
+	<div id="sider-bar-main-left">
+	
+		<div class="widget">
+		
+			<div class="widget-title" id="widget-tags-cloud"><h3>Tags Cloud</h3></div>
+			
+			<div class="widget-content" id="tags-cloud">
+			{% for tag in tag_cloud %}
+				<span class="tag-link"><a href="../../tag/{{tag}}">{{tag.name}}</a></span>
+			{% endfor %}
+			</div>
+			
+		</div>
+		
+		<div class="widget">
+		
+			<div class="widget-title" id="widget-cat-link"><h3>Catagory</h3></div>
+			
+			<div class="widget-content" id="cat-link">
+				<ul>
+					{% for cat in cats %}
+					<li><a href='/catagory/{{cat.slug}}/1'>{{cat.name}}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+			
+		</div>
+		
+		<div class="widget">
+
+			<div class="widget-title" id="widget-archive-link"><h3>Archive</h3></div>
+
+			<div class="widget-content" id="archieve-link">
+				<ul>
+					<li><a href='/archive/2009/1/'>2009-01</a></li>
+					<li><a href='/archive/2008/12/'>2008-12</a></li>
+					<li><a href='/archive/2008/11/'>2008-11</a></li>
+					<li><a href='/archive/2008/10/'>2008-10</a></li>
+					<li><a href='/archive/2008/9/'>2008-09</a></li>
+					<li><a href='/archive/2008/8/'>2008-08</a></li>					
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

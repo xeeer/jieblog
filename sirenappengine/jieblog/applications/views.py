@@ -198,12 +198,6 @@ def catagory(request,cat_slug,page=1):
 					blog_slug = blog_slug
 					)
 	return render('index.html', payload)
-	
-
-
-
-
-
 
 
 def index(request,page=1):
@@ -270,15 +264,6 @@ def index(request,page=1):
 	return render('index.html', payload)
 
 
-
-
-
-
-
-
-
-
-
 def comment(request, post_slug):
 	user = users.get_current_user()
 	if user:
@@ -319,7 +304,7 @@ def comment(request, post_slug):
 	articles =  models.Post.all().filter('article',True)
 	friendsconnect = False
 	payload = dict(cats=cats,friendsconnect=friendsconnect,articles=articles,featurelink=featurelink,tag_cloud=tag_cloud,sitelink=sitelink,greeting=greeting,show_edit=show_edit,post=post,commentform=commentform,comments=comments)
-	return render('comment.html', payload)
+	return render('single.html', payload)
 	
 def site_link(request):
 	sitelink = models.SiteLink.all()

@@ -1,0 +1,35 @@
+﻿{% extends 'admin-base.html' %}
+{% block title %}
+<style type="text/css" media="screen">
+	#id_content {width:640px;height: 300px;}		
+</style>
+{% endblock %}
+{% block contents %}
+<script type="text/javascript" src="/scripts/nicEdit.js"></script>
+<script type="text/javascript">
+bkLib.onDomLoaded(function() {
+	new nicEditor({
+					fullPanel : true,
+					iconsPath : '/images/nicEditorIcons.gif'
+					}).panelInstance('id_content');
+});
+</script>
+<div id="header">
+		<ul id="menu">
+			<li class='page_li'><a href="/login">Login</a></li>
+			<li class='page_li'><a href='/list'>Post List</a></li>
+			<li class='current_page_li'><a href="/create">New Post</a></li>
+			<li class='page_li'><a href="/setupdb">Site Config</a></li>
+		<ul>
+</div>
+<div id="main">
+{% include 'admin-sider-bar.html' %}
+<div id='post-form'>
+	<form action="." method="post"  id="form1">
+		{{postform.as_ul}}
+		<input type="submit" name="submit" value="Submit" id="submit"/>
+	</form>
+</div>
+</div>
+{% endblock%}
+
