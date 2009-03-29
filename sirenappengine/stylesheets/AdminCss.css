@@ -7,7 +7,23 @@ a:link { text-decoration: none; color : #0083e3; border: 0px;}
 a:active { text-decoration: underline; color : #0083e3; border: 0px;}
 a:visited { text-decoration: none; color : #0083e3; border: 0px;}
 a:hover	{ text-decoration: underline; color : #0099cc; border: 0px;}
+h1 {
+	margin:0;
+	padding:0;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: georgia;
+}
 h4 { margin:0;padding:0;}
+
+#blog-title a {
+	color: #000;
+}
+#subheading {
+	margin-top: 5px;
+	color: #999;
+	font-style: italic;
+}
 #container {
 	width: 100%;
 	margin:0;
@@ -56,31 +72,38 @@ h4 { margin:0;padding:0;}
 	color: #ccc;
 }
 #main-form label {
-	width: 60px;
 	float: left;
 	color: #999;
 	font-weight: bold;
+	margin-right: 30px;
+	height: 28px;
+	width: 90px;
+	font-size: 11px;
 }
 #main-form li {
-	line-height: 24px;
+	line-height: 30px;
+	height: 28px;
 	list-style: none;
 }
 #id_title,#id_tags,#id_slug,#id_cat,#id_subtitle {
 	width: 300px;
-	border: 1px solid #999;
+	border: 2px solid #999;
 	font-size:12px;
 }
 #id_content {
 	width: 560px;
 	min-height: 300px;
-	border: 1px solid #999;
+	border: 2px solid #999;
 }
 #id_title:focus,#id_tags:focus,#id_slug:focus,#id_cat:focus,#id_content:focus,#id_subtitle:focus {
 	border: 2px solid #0083e3;
 }
-
+#id_site_title {width:200px;font-size:11px;font-family: "Lucida Grande", Tahoma, Verdana, arial, sans-serif, hei;}
+#id_site_copyright {width:500px;font-size:11px;font-family: "Lucida Grande", Tahoma, Verdana, arial, sans-serif, hei;}
+#id_sub_title {width:500px;font-size:11px;font-family: "Lucida Grande", Tahoma, Verdana, arial, sans-serif, hei;}
+#id_post_per_page {width:50px;font-size:11px;font-family: "Lucida Grande", Tahoma, Verdana, arial, sans-serif, hei;}
 #submit {
-	margin-left:60px;
+	margin-left:130px;
 }
 
 #postlist { margin: 1em 0.5em; 

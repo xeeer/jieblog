@@ -8,17 +8,24 @@ from funcs import render
 def Config(request):
 	user = users.get_current_user()
 	if users.is_current_user_admin():
+		keyname="blog"
+		site = models.Site.get_or_insert(keyname)
 		if request.method == 'POST':
 			siteform = bforms.SiteForm(request.POST)
 			if siteform.is_valid():
-				site = siteform.save()
-				return HttpResponseRedirect('/admin/create')
+				siteform.save(site)
+				return HttpResponseRedirect('/admin/config')
 		else:
-			siteform = bforms.SiteForm()
-		sites = models.Site.all()
+			siteform = bforms.SiteForm(initial={'site_title':site.site_title,
+											'sub_title':site.sub_title,
+											'site_copyright':site.site_copyright,
+											'post_per_page':site.post_per_page,
+											'owner_name':site.owner_name,
+											'code_license':site.code_license,
+											'content_license':site.content_license})
 	else:
 		return  HttpResponseRedirect('/login')
-	payload = dict(siteform = siteform, sites = sites)
+	payload = dict(siteform = siteform)
 	return render('AdminConfig.html', payload)
 
 def PostCat(request):

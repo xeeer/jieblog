@@ -4,11 +4,41 @@ import models
 from google.appengine.ext.db import djangoforms
 from funcs import split_tags,get_cat
 
+CODE_LICENSE_CHOICES = (
+	('Artistic License/GPL', 'Artistic License/GPL'),
+	('Apache License 2.0', 'Apache License 2.0'),
+	('Eclipse Public License 1.0', 'Eclipse Public License 1.0'),
+	('GNU General Public License v2', 'GNU General Public License v2'),
+	('GNU General Public License v3', 'GNU General Public License v3'),
+	('GNU Lesser General Public License', 'GNU Lesser General Public License'),
+	('MIT License', 'MIT License'),
+	('Mozilla Public License 1.1', 'Mozilla Public License 1.1'),
+	('New BSD License', 'New BSD License'),
+)
+
+CONTENT_LICENSE_CHOICES = (
+	('Creative Commons 3.0 BY', 'Creative Commons 3.0 BY'),
+	('Creative Commons 2.0 BY-SA', 'Creative Commons 2.0 BY-SA'),
+)
+
 class SiteForm(forms.Form):
-	title = forms.CharField(initial='jieblog')
-	subtitle = forms.CharField(initial='just another blog')
-	def save(self):
-		site = models.Site(site_title=self.clean_data['title'],sub_title=self.clean_data['subtitle'])
+	site_title = forms.CharField()
+	sub_title = forms.CharField()
+	site_copyright = forms.CharField()
+	post_per_page = forms.IntegerField(max_value=30,min_value=1)
+	owner_name = forms.CharField()
+	code_license = forms.ChoiceField(choices=CODE_LICENSE_CHOICES)
+	content_license = forms.ChoiceField(choices=CONTENT_LICENSE_CHOICES)
+
+
+	def save(self,site):
+		site.site_title = self.clean_data['site_title']
+		site.sub_title = self.clean_data['sub_title']
+		site.site_copyright = self.clean_data['site_copyright']
+		site.post_per_page = self.clean_data['post_per_page']
+		site.owner_name = self.clean_data['owner_name']
+		site.code_license = self.clean_data['code_license']
+		site.content_license = self.clean_data['content_license']
 		site.put()
 
 class CatForm(forms.Form):

@@ -106,13 +106,15 @@ a:hover	{ text-decoration: underline; color : #0099cc; border: 0px;}
 .post-time {
 	background: url('/icons/25.png') no-repeat;
 	padding: 1px 0px 2px 18px;
+	color:#66cc00;
 }
 .post-author {
 	background: url('/icons/37.png') no-repeat;
 	padding: 1px 0px 2px 18px;
+	color:#ff6600;
 }
 .post-comments-count{
-	background: url('/icons/47.png') no-repeat;
+	background: url('/icons/17.png') no-repeat;
 	padding: 1px 0px 2px 18px;
 }
 .post-tags-main {
@@ -149,6 +151,9 @@ blockquote {
 	color: #ff0000;
 	font-weight: bold;
 }
+#tag-cloud .widget-content{
+	text-align:center;
+}
 #commenting {
 	padding: 20px;
 	width:600px;
@@ -170,8 +175,19 @@ blockquote {
 	font-size: 10px;
 	color: #999;
 	text-align: right;
+	font-weight: bold;
+	margin-top:5px;
 }
-
+.comment-author a{
+	color: #ff6600;
+}
+.comment-by {
+	background: url('/icons/38.png') no-repeat;
+	padding: 1px 0px 1px 18px;
+}
+.comment-time {
+	color: #66cc00;
+}
 .comment-content {
 	padding: 5px;
 	margin-left: 50px;

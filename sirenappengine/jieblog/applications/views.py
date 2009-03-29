@@ -217,10 +217,13 @@ def index(request,page=1):
 		page = int(page)-1
 	except:
 		page = 0
+	
+	keyname="blog"
+	site = models.Site.get_or_insert(keyname)
 	show_prev = False
 	show_next = False
 	all_posts = models.Post.all().order('-post_on')
-	paginator = ObjectPaginator(all_posts,10)
+	paginator = ObjectPaginator(all_posts,site.post_per_page)
 	if page >= paginator.pages:
 		page = paginator.pages - 1
 	posts=paginator.get_page(page)
@@ -242,9 +245,9 @@ def index(request,page=1):
 	tag_cloud = models.BlogTag.all()
 	articles =  models.Post.all().filter('article',True)
 	cats=models.Cat.all()
-	
-	
-	payload = dict(cats=cats,
+
+	payload = dict( site=site,
+					cats=cats,
 					recent_comments=recent_comments,
 					articles=articles,
 					featurelink=featurelink,
@@ -278,6 +281,8 @@ def comment(request, post_slug):
 	else:
 		show_edit = False
 #	post = models.Post.get_by_key_name(slug)
+	keyname="blog"
+	site = models.Site.get_or_insert(keyname)
 	posts = models.Post.all().filter('slug =', post_slug).fetch(1)
 	post = posts[0]
 	comments = models.Comments.all().filter('post =',post)
@@ -303,7 +308,7 @@ def comment(request, post_slug):
 	tag_cloud = models.BlogTag.all()
 	articles =  models.Post.all().filter('article',True)
 	friendsconnect = False
-	payload = dict(cats=cats,friendsconnect=friendsconnect,articles=articles,featurelink=featurelink,tag_cloud=tag_cloud,sitelink=sitelink,greeting=greeting,show_edit=show_edit,post=post,commentform=commentform,comments=comments)
+	payload = dict(site=site,cats=cats,friendsconnect=friendsconnect,articles=articles,featurelink=featurelink,tag_cloud=tag_cloud,sitelink=sitelink,greeting=greeting,show_edit=show_edit,post=post,commentform=commentform,comments=comments)
 	return render('single.html', payload)
 	
 def site_link(request):

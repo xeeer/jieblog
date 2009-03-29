@@ -11,8 +11,13 @@ class ConfigDB(db.Model):
 		return '%s' %self.key().id()
 
 class Site(db.Model):
-	site_title = db.StringProperty()
-	sub_title = db.StringProperty()
+	site_title = db.StringProperty(default='JIEBlog')
+	sub_title = db.StringProperty(default='just another JIEBlog')
+	site_copyright = db.StringProperty(default=u'Copyright © 2009 Powered by Google Appengine')
+	post_per_page = db.IntegerProperty(default=10)
+	owner_name = db.StringProperty(default=u'Lucidanui')
+	code_license = db.StringProperty()
+	content_license = db.StringProperty()
 
 class BlogTag(db.Model):
 	name = db.StringProperty()
