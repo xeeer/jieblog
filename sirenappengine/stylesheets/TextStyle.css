@@ -80,7 +80,6 @@ b {
 }
 #copyright,#license {
 	font-family: Georgia, "Lucida Grande",Tahoma, Verdana, arial, sans-serif, hei;
-	color: #66cc00;
 }
 a:link { text-decoration: none; color : #0083e3; border: 0px;}
 a:active { text-decoration: underline; color : #0083e3; border: 0px;}
@@ -266,4 +265,8 @@ blockquote {
 .tag-link {
 	padding:1px;
 }
-
+.img-frame {
+	padding: 1px;
+	border: 1px solid #888a85;
+	background-color: #fff;
+}

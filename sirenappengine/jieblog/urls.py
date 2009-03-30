@@ -5,6 +5,7 @@ urlpatterns = patterns('',
     (r'^post/(?P<post_slug>[^\.^/]+)/$', 'jieblog.applications.views.comment'),
     (r'^page/(?P<page>[^\.^/]+)/$', 'jieblog.applications.views.index'),
     (r'^post/$', 'jieblog.applications.views.index'),
+    (r'^wiki/$', 'jieblog.wiki.views.wiki'),
     (r'^catagory/(?P<cat_slug>[^\.^/]+)/(?P<page>[^\.^/]+)/$', 'jieblog.applications.views.catagory'),
 #archive view  
     (r'^archive/(?P<post_year>[^\.^/]+)/(?P<post_month>[^\.^/]+)/$', 'jieblog.applications.views.archive'),
@@ -43,13 +44,15 @@ urlpatterns = patterns('',
     (r'^cat/$', 'jieblog.applications.background.PostCat'),
     
 #new admin interface
+    (r'^admin/$', 'jieblog.applications.background.create'),
     (r'^admin/create/$', 'jieblog.applications.background.create'),
     (r'^admin/config/$', 'jieblog.applications.background.Config'),
     (r'^admin/manage/$', 'jieblog.applications.background.list_post'),
+    (r'^admin/wiki/$', 'jieblog.wiki.views.write_wiki'),
     (r'^admin/edit/(?P<post_id>[^\.^/]+)/$', 'jieblog.applications.background.edit'),
-    (r'^admin/cat/$', 'jieblog.applications.background.PostCat'),
-    (r'^admin/cat/edit/(?P<cat_id>[^\.^/]+)/$', 'jieblog.applications.background.edit_cat'),
-    (r'^admin/cat/delete/(?P<cat_id>[^\.^/]+)/$', 'jieblog.applications.background.delete_cat'),
+    (r'^admin/catagory/$', 'jieblog.applications.background.PostCat'),
+    (r'^admin/catagory/edit/(?P<cat_id>[^\.^/]+)/$', 'jieblog.applications.background.edit_cat'),
+    (r'^admin/catagory/delete/(?P<cat_id>[^\.^/]+)/$', 'jieblog.applications.background.delete_cat'),
 #test content
 )
 

@@ -10,11 +10,12 @@
 			<li class="not-current"><a href='/admin/config' title='Site Config'>Site Config</a></li>
 			<li class="not-current"><a href='/admin/manage' title='Post Manage'>Post Manage</a></li>
 			<li class="current-page"><a href='/admin/catagory' title='Catagory Manage'>Catagory Manage</a></li>
+			<li class="not-current"><a href='/admin/wiki' title='Wiki Manage'>Wiki Manage</a></li>
 		</ul>
 	</div>
 </div>
 <div id="main">
-	<table id="catlist">
+	<table id="postlist">
 	  <tr>
 		<th>No.</th>
 		<th>ID</th>
@@ -29,14 +30,16 @@
 		  <td>{{ cat.key.id }}</td>
 		  <td>{{ cat.name }}</td>
 		  <td>{{ cat.slug }}</td>
-		  <td><a href="/admin/cat/edit/{{cat.key.id}}">Edit</a></td>
-		  <td><a href="/admin/cat/delete/{{cat.key.id}}">Delete</a></td>
+		  <td><a href="/admin/catagory/edit/{{cat.key.id}}">Edit</a></td>
+		  <td><a href="/admin/catagory/delete/{{cat.key.id}}">Delete</a></td>
 		</tr>
 	  {% endfor %}
 	</table>
-	<form action="." method="post">
-		{{catform.as_ul}}
-		<input type="submit" name="cat_form" value="Submit" />
-	</form>
+	<div id="main-form">	
+		<form action="." method="post">
+			{{catform.as_ul}}
+			<input type="submit" name="cat_form" value="Submit" />
+		</form>
+	</div>
 </div>
 {% endblock%}

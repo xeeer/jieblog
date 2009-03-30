@@ -69,6 +69,8 @@ def tags(request,post_tag):
 	tag_cloud = getcached('BlogTag', lambda: models.BlogTag.all(), expiration=3600)
 	articles = all_posts.filter('article',True)
 	cats=models.Cat.all()
+	keyname="blog"
+	site = models.Site.get_or_insert(keyname)
 	payload = dict(cats=cats,
 					recent_comments=recent_comments,
 					featurelink=featurelink,
@@ -77,22 +79,27 @@ def tags(request,post_tag):
 					posts = posts,
 					greeting=greeting,
 					show_edit=show_edit,
-					blog_view = 'tag')
+					blog_view = 'tag',
+					site=site,)
 	return render('index.html',payload)
 	
 def feeds(request):
 	posts =  getcached('Post', lambda: models.Post.all(), expiration=3600)
 	latest_post = posts[posts.count()-1]
 	posts.order('-post_on')
-	payload = dict(posts = posts,latest_post = latest_post)
+	keyname="blog"
+	site = models.Site.get_or_insert(keyname)
+	payload = dict(posts = posts,latest_post = latest_post,site=site)
 	return render('atom.xml',payload)
 	
 def sitemap(request):
 	posts =  getcached('Post', lambda: models.Post.all(), expiration=3600)
 	cats = models.Cat.all()
 	latest_post = posts[posts.count()-1]
-	posts = posts.order('-post_on').fetch(10)	
-	payload = dict(cats = cats,posts = posts,latest_post = latest_post)
+	posts = posts.order('-post_on').fetch(10)
+	keyname="blog"
+	site = models.Site.get_or_insert(keyname)
+	payload = dict(cats = cats,posts = posts,latest_post = latest_post,site=site)
 	return render('feed.xml',payload)
 
 def archive(request,post_year,post_month):

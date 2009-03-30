@@ -76,5 +76,6 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'jieblog.applications'
+    'jieblog.applications',
+    'jieblog.wiki',
 )
