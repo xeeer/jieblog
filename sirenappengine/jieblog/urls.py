@@ -47,6 +47,9 @@ urlpatterns = patterns('',
     (r'^admin/config/$', 'jieblog.applications.background.Config'),
     (r'^admin/manage/$', 'jieblog.applications.background.list_post'),
     (r'^admin/edit/(?P<post_id>[^\.^/]+)/$', 'jieblog.applications.background.edit'),
+    (r'^admin/cat/$', 'jieblog.applications.background.PostCat'),
+    (r'^admin/cat/edit/(?P<cat_id>[^\.^/]+)/$', 'jieblog.applications.background.edit_cat'),
+    (r'^admin/cat/delete/(?P<cat_id>[^\.^/]+)/$', 'jieblog.applications.background.delete_cat'),
 #test content
 )
 

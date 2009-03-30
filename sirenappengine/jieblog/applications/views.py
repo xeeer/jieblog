@@ -125,7 +125,9 @@ def archive(request,post_year,post_month):
 	featurelink = getcached('FeatureLink', lambda: models.FeatureLink.all(), expiration=3600)
 	tag_cloud = getcached('BlogTag', lambda: models.BlogTag.all(), expiration=3600)
 	articles =  models.Post.all().filter('article',True)
-	cats=models.Cat.all()	
+	cats=models.Cat.all()
+	keyname="blog"
+	site = models.Site.get_or_insert(keyname)
 	payload = dict(recent_comments=recent_comments,
 					sitelink=sitelink,
 					featurelink=featurelink,
@@ -134,6 +136,7 @@ def archive(request,post_year,post_month):
 					greeting=greeting,
 					posts = posts,
 					blog_view = 'archive',
+					site=site,
 					)
 	return render('index.html', payload)
 	
@@ -170,8 +173,11 @@ def catagory(request,cat_slug,page=1):
 	pages=range(1,paginator.pages+1)	
 	show_prev = paginator.has_previous_page(page)
 	show_next = paginator.has_next_page(page)
-	page=page+1	
-		
+	page=page+1
+	
+	keyname="blog"
+	site = models.Site.get_or_insert(keyname)
+	
 	blog_view = 'catagory'
 	blog_slug = cat_slug
 	recent_comments= getcached('Comments', lambda: models.Comments.all().order('-comments_post_on').fetch(5), expiration=3600)
@@ -195,7 +201,8 @@ def catagory(request,cat_slug,page=1):
 					next = page + 1,
 					posts = posts_page,
 					blog_view = blog_view,
-					blog_slug = blog_slug
+					blog_slug = blog_slug,
+					site=site,
 					)
 	return render('index.html', payload)
 
@@ -216,8 +223,7 @@ def index(request,page=1):
 	try:
 		page = int(page)-1
 	except:
-		page = 0
-	
+		page = 0	
 	keyname="blog"
 	site = models.Site.get_or_insert(keyname)
 	show_prev = False

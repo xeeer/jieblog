@@ -42,6 +42,9 @@ h4 { margin:0;padding:0;}
 	background-color:#c5d7ef;
 	min-height:500px;
 }
+#copyright {
+	font-family: Georgia, "Lucida Grande",Tahoma, Verdana, arial, sans-serif, hei;
+}
 #side {
 	margin:0;
 	padding-left:10px;
@@ -58,7 +61,6 @@ h4 { margin:0;padding:0;}
 	padding-left:20px;
 	list-style: none;
 }
-
 #side li a {
 	font-weight: bold;
 }

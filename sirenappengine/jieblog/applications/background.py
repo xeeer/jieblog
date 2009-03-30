@@ -30,18 +30,19 @@ def Config(request):
 
 def PostCat(request):
 	user = users.get_current_user()
+	cats = models.Cat.all()
 	if users.is_current_user_admin():
 		if request.method == 'POST':
 			catform = bforms.CatForm(request.POST)
 			if catform .is_valid():
 				cat = catform .save()
-				return HttpResponseRedirect('/create')
+				return HttpResponseRedirect('/admin/cat')
 		else:
 			catform = bforms.CatForm()
 	else:
 		return  HttpResponseRedirect('/login')
-	payload = dict(catform = catform )
-	return render('cat-form.html', payload)
+	payload = dict(catform = catform,cats=cats)
+	return render('AdminCat.html', payload)
 
 def list_post(request,page=0):
 	user = users.get_current_user()
@@ -75,6 +76,14 @@ def delete_post(request,post_id):
 		return HttpResponseRedirect('/login')
 	return HttpResponseRedirect('/list')
 
+def delete_cat(request,cat_id):
+	user = users.get_current_user()
+	if users.is_current_user_admin():
+		cat = models.Cat.get_by_id(int(cat_id))
+		cat.delete()
+	else:
+		return HttpResponseRedirect('/login')
+	return HttpResponseRedirect('/admin/cat')
 
 def create(request):
 	user = users.get_current_user()
@@ -108,7 +117,23 @@ def edit(request,post_id):
 		return HttpResponseRedirect('/login')
 	payload = dict(postform=postform)
 	return render('AdminDashboard.html', payload)
-	
+
+def edit_cat(request,cat_id):
+	user=users.get_current_user()
+	cats=models.Cat.all()
+	if users.is_current_user_admin():
+		cat=models.Cat.get_by_id(int(cat_id))
+		catform=bforms.CatForm(initial={'name':cat.name,'slug':cat.slug})
+		if request.method == 'POST':
+			catform = bforms.CatForm(request.POST)
+			if catform.is_valid():
+				catform.edit(cat)
+				return HttpResponseRedirect('/admin/cat')
+	else:
+		return HttpResponseRedirect('/login')
+	payload = dict(catform=catform,cats=cats)
+	return render('AdminCat.html',payload)
+
 def login(request):
 	user = users.get_current_user()
 	if user:

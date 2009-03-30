@@ -47,6 +47,10 @@ class CatForm(forms.Form):
 	def save(self):
 		cat = models.Cat(name=self.clean_data['name'],slug=self.clean_data['slug'])
 		cat.put()
+	def edit(self,cat):
+		cat.name=self.clean_data['name']
+		cat.slug=self.clean_data['slug']
+		cat.put()
 
 class ConfigForm(forms.Form):
 	name = forms.CharField()

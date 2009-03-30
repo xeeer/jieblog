@@ -1,0 +1,42 @@
+{% extends 'AdminBase.html' %}
+{% load filter %}
+{% block contents %}
+<div id="side">
+	{% include 'AdminSide.html' %}
+	<div class="widget" id="navigate">
+		<h3>Navigate</h3>
+		<ul id='menu'>
+			<li class="not-current"><a href='/admin/create' title='Create Post'>Create Post</a></li>
+			<li class="not-current"><a href='/admin/config' title='Site Config'>Site Config</a></li>
+			<li class="not-current"><a href='/admin/manage' title='Post Manage'>Post Manage</a></li>
+			<li class="current-page"><a href='/admin/catagory' title='Catagory Manage'>Catagory Manage</a></li>
+		</ul>
+	</div>
+</div>
+<div id="main">
+	<table id="catlist">
+	  <tr>
+		<th>No.</th>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Slug</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	  </tr>
+	  {% for cat in cats %}
+		<tr class="{% cycle odd,even %}">
+		  <td>{{ forloop.counter }}</td>
+		  <td>{{ cat.key.id }}</td>
+		  <td>{{ cat.name }}</td>
+		  <td>{{ cat.slug }}</td>
+		  <td><a href="/admin/cat/edit/{{cat.key.id}}">Edit</a></td>
+		  <td><a href="/admin/cat/delete/{{cat.key.id}}">Delete</a></td>
+		</tr>
+	  {% endfor %}
+	</table>
+	<form action="." method="post">
+		{{catform.as_ul}}
+		<input type="submit" name="cat_form" value="Submit" />
+	</form>
+</div>
+{% endblock%}
